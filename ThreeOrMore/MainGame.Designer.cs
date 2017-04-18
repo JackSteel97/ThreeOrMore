@@ -23,20 +23,21 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGame));
             this.gameContainer = new MonoFlat.MonoFlat_ThemeContainer();
-            this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
-            this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
-            this.die3 = new System.Windows.Forms.PictureBox();
-            this.die4 = new System.Windows.Forms.PictureBox();
-            this.die5 = new System.Windows.Forms.PictureBox();
-            this.die2 = new System.Windows.Forms.PictureBox();
             this.die1 = new System.Windows.Forms.PictureBox();
+            this.die2 = new System.Windows.Forms.PictureBox();
+            this.die5 = new System.Windows.Forms.PictureBox();
+            this.die4 = new System.Windows.Forms.PictureBox();
+            this.die3 = new System.Windows.Forms.PictureBox();
+            this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
+            this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
             this.gameContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.die3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die3)).BeginInit();
             this.SuspendLayout();
             // 
             // gameContainer
@@ -62,16 +63,60 @@
             this.gameContainer.TabIndex = 0;
             this.gameContainer.Text = "Three or More";
             // 
-            // monoFlat_ControlBox1
+            // die1
             // 
-            this.monoFlat_ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_ControlBox1.EnableHoverHighlight = false;
-            this.monoFlat_ControlBox1.EnableMaximizeButton = true;
-            this.monoFlat_ControlBox1.EnableMinimizeButton = true;
-            this.monoFlat_ControlBox1.Location = new System.Drawing.Point(1792, 15);
-            this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";
-            this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
-            this.monoFlat_ControlBox1.TabIndex = 0;
+            this.die1.BackColor = System.Drawing.Color.DimGray;
+            this.die1.Image = ((System.Drawing.Image)(resources.GetObject("die1.Image")));
+            this.die1.Location = new System.Drawing.Point(610, 300);
+            this.die1.Name = "die1";
+            this.die1.Size = new System.Drawing.Size(100, 100);
+            this.die1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.die1.TabIndex = 6;
+            this.die1.TabStop = false;
+            // 
+            // die2
+            // 
+            this.die2.BackColor = System.Drawing.Color.DimGray;
+            this.die2.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die2.Location = new System.Drawing.Point(760, 300);
+            this.die2.Name = "die2";
+            this.die2.Size = new System.Drawing.Size(100, 100);
+            this.die2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.die2.TabIndex = 5;
+            this.die2.TabStop = false;
+            // 
+            // die5
+            // 
+            this.die5.BackColor = System.Drawing.Color.DimGray;
+            this.die5.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die5.Location = new System.Drawing.Point(1210, 300);
+            this.die5.Name = "die5";
+            this.die5.Size = new System.Drawing.Size(100, 100);
+            this.die5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.die5.TabIndex = 4;
+            this.die5.TabStop = false;
+            // 
+            // die4
+            // 
+            this.die4.BackColor = System.Drawing.Color.DimGray;
+            this.die4.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die4.Location = new System.Drawing.Point(1060, 300);
+            this.die4.Name = "die4";
+            this.die4.Size = new System.Drawing.Size(100, 100);
+            this.die4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.die4.TabIndex = 3;
+            this.die4.TabStop = false;
+            // 
+            // die3
+            // 
+            this.die3.BackColor = System.Drawing.Color.DimGray;
+            this.die3.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die3.Location = new System.Drawing.Point(910, 300);
+            this.die3.Name = "die3";
+            this.die3.Size = new System.Drawing.Size(100, 100);
+            this.die3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.die3.TabIndex = 2;
+            this.die3.TabStop = false;
             // 
             // turnLbl
             // 
@@ -85,55 +130,16 @@
             this.turnLbl.TabIndex = 1;
             this.turnLbl.Text = "Player1\'s Turn";
             // 
-            // die3
+            // monoFlat_ControlBox1
             // 
-            this.die3.BackColor = System.Drawing.Color.DimGray;
-            this.die3.Location = new System.Drawing.Point(910, 300);
-            this.die3.Name = "die3";
-            this.die3.Size = new System.Drawing.Size(100, 100);
-            this.die3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.die3.TabIndex = 2;
-            this.die3.TabStop = false;
-            // 
-            // die4
-            // 
-            this.die4.BackColor = System.Drawing.Color.DimGray;
-            this.die4.Location = new System.Drawing.Point(1060, 300);
-            this.die4.Name = "die4";
-            this.die4.Size = new System.Drawing.Size(100, 100);
-            this.die4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.die4.TabIndex = 3;
-            this.die4.TabStop = false;
-            // 
-            // die5
-            // 
-            this.die5.BackColor = System.Drawing.Color.DimGray;
-            this.die5.Location = new System.Drawing.Point(1210, 300);
-            this.die5.Name = "die5";
-            this.die5.Size = new System.Drawing.Size(100, 100);
-            this.die5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.die5.TabIndex = 4;
-            this.die5.TabStop = false;
-            // 
-            // die2
-            // 
-            this.die2.BackColor = System.Drawing.Color.DimGray;
-            this.die2.Location = new System.Drawing.Point(760, 300);
-            this.die2.Name = "die2";
-            this.die2.Size = new System.Drawing.Size(100, 100);
-            this.die2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.die2.TabIndex = 5;
-            this.die2.TabStop = false;
-            // 
-            // die1
-            // 
-            this.die1.BackColor = System.Drawing.Color.DimGray;
-            this.die1.Location = new System.Drawing.Point(610, 300);
-            this.die1.Name = "die1";
-            this.die1.Size = new System.Drawing.Size(100, 100);
-            this.die1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.die1.TabIndex = 6;
-            this.die1.TabStop = false;
+            this.monoFlat_ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_ControlBox1.EnableHoverHighlight = false;
+            this.monoFlat_ControlBox1.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox1.EnableMinimizeButton = true;
+            this.monoFlat_ControlBox1.Location = new System.Drawing.Point(1792, 15);
+            this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";
+            this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
+            this.monoFlat_ControlBox1.TabIndex = 0;
             // 
             // MainGame
             // 
@@ -149,11 +155,11 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.gameContainer.ResumeLayout(false);
             this.gameContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.die3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.die2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.die3)).EndInit();
             this.ResumeLayout(false);
 
         }
