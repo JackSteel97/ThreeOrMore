@@ -75,6 +75,7 @@
             this.startGameBtn.TabIndex = 9;
             this.startGameBtn.Text = "Start Game";
             this.startGameBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.startGameBtn.Click += new System.EventHandler(this.startGameBtn_Click);
             // 
             // scoreToWinLbl
             // 

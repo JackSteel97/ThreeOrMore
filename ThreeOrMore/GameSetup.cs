@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ThreeOrMore {
@@ -51,6 +46,15 @@ namespace ThreeOrMore {
             }
             scoreToWin = scoreSlider.Value;
             scoreToWinLbl.Text = string.Format("A player needs {0} points to win", scoreToWin);
+        }
+
+        private void startGameBtn_Click(object sender, EventArgs e) {
+            MainGame game = new MainGame();
+            game.players = players;
+            game.scoreToWin = scoreToWin;
+            game.dieFaces = dieFaces;
+            game.Show();
+            this.Close();
         }
     }
 }

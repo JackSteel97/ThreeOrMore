@@ -24,11 +24,14 @@
         /// </summary>
         private void InitializeComponent() {
             this.gameContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
+            this.gameContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // gameContainer
             // 
             this.gameContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.gameContainer.Controls.Add(this.monoFlat_ControlBox1);
             this.gameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gameContainer.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gameContainer.Location = new System.Drawing.Point(0, 0);
@@ -42,6 +45,18 @@
             this.gameContainer.TabIndex = 0;
             this.gameContainer.Text = "Three or More";
             // 
+            // monoFlat_ControlBox1
+            // 
+            this.monoFlat_ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_ControlBox1.EnableHoverHighlight = false;
+            this.monoFlat_ControlBox1.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox1.EnableMinimizeButton = true;
+            this.monoFlat_ControlBox1.Location = new System.Drawing.Point(1804, 0);
+            this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";
+            this.monoFlat_ControlBox1.Size = new System.Drawing.Size(100, 25);
+            this.monoFlat_ControlBox1.TabIndex = 0;
+            this.monoFlat_ControlBox1.Text = "monoFlat_ControlBox1";
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -54,6 +69,7 @@
             this.Text = "Three or More";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.gameContainer.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -61,5 +77,6 @@
         #endregion
 
         private MonoFlat.MonoFlat_ThemeContainer gameContainer;
+        private MonoFlat.MonoFlat_ControlBox monoFlat_ControlBox1;
     }
 }
