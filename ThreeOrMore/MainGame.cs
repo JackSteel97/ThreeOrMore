@@ -18,8 +18,5 @@ namespace ThreeOrMore {
         public MainGame() {
             InitializeComponent();
         }
-
-
-      
     }
 }

@@ -135,24 +135,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Die1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Die2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Die3.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Die4.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Die5.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Die6.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\Die1.png" />
   </ItemGroup>
   <ItemGroup>
