@@ -389,7 +389,7 @@ namespace MonoFlat {
             Graphics G = e.Graphics;
 
             G.Clear(Color.FromArgb(32, 41, 50));
-            G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), new Rectangle(0, 0, Width, 60));
+            G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), new Rectangle(0, 0, Width, 60));
 
             if (_RoundCorners == true) {
                 // Draw Left upper corner
@@ -402,10 +402,10 @@ namespace MonoFlat {
                 G.FillRectangle(Brushes.Fuchsia, 0, 3, 1, 1);
                 G.FillRectangle(Brushes.Fuchsia, 1, 1, 1, 1);
 
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), 1, 3, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), 1, 2, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), 2, 1, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), 3, 1, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), 1, 3, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), 1, 2, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), 2, 1, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), 3, 1, 1, 1);
 
                 // Draw right upper corner
                 G.FillRectangle(Brushes.Fuchsia, Width - 1, 0, 1, 1);
@@ -417,10 +417,10 @@ namespace MonoFlat {
                 G.FillRectangle(Brushes.Fuchsia, Width - 1, 3, 1, 1);
                 G.FillRectangle(Brushes.Fuchsia, Width - 2, 1, 1, 1);
 
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), Width - 2, 3, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), Width - 2, 2, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), Width - 3, 1, 1, 1);
-                G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), Width - 4, 1, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), Width - 2, 3, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), Width - 2, 2, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), Width - 3, 1, 1, 1);
+                G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), Width - 4, 1, 1, 1);
 
                 // Draw Left bottom corner
                 G.FillRectangle(Brushes.Fuchsia, 0, Height - 1, 1, 1);
@@ -591,12 +591,12 @@ namespace MonoFlat {
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
             Graphics G = e.Graphics;
-            G.Clear(Color.FromArgb(181, 41, 42));
+            G.Clear(Color.FromArgb(37, 113, 186));
 
             if (_EnableHoverHighlight == true) {
                 switch (ButtonHState) {
                     case ButtonHoverState.None:
-                        G.Clear(Color.FromArgb(181, 41, 42));
+                        G.Clear(Color.FromArgb(37, 113, 186));
                         break;
                     case ButtonHoverState.Minimize:
                         if (_EnableMinimize == true) {
@@ -831,8 +831,8 @@ namespace MonoFlat {
             ForeColor = Color.FromArgb(255, 255, 255);
             Size = new Size(146, 41);
             _TextAlignment = StringAlignment.Center;
-            P1 = new Pen(Color.FromArgb(181, 41, 42)); // P1 = Border color
-            P3 = new Pen(Color.FromArgb(165, 37, 37)); // P3 = Border color when pressed
+            P1 = new Pen(Color.FromArgb(37, 113, 186)); // P1 = Border color
+            P3 = new Pen(Color.FromArgb(35, 99, 160)); // P3 = Border color when pressed
         }
 
         protected override void OnResize(System.EventArgs e) {
@@ -842,8 +842,8 @@ namespace MonoFlat {
                 Shape = new GraphicsPath();
                 R1 = new Rectangle(0, 0, Width, Height);
 
-                InactiveGB = new LinearGradientBrush(new Rectangle(0, 0, Width, Height), Color.FromArgb(181, 41, 42), Color.FromArgb(181, 41, 42), 90.0F);
-                PressedGB = new LinearGradientBrush(new Rectangle(0, 0, Width, Height), Color.FromArgb(165, 37, 37), Color.FromArgb(165, 37, 37), 90.0F);
+                InactiveGB = new LinearGradientBrush(new Rectangle(0, 0, Width, Height), Color.FromArgb(37, 113, 186), Color.FromArgb(37, 113, 186), 90.0F);
+                PressedGB = new LinearGradientBrush(new Rectangle(0, 0, Width, Height), Color.FromArgb(35, 99, 160), Color.FromArgb(35, 99, 160), 90.0F);
             }
 
             Shape.AddArc(0, 0, 10, 10, 180, 90);
@@ -950,7 +950,7 @@ namespace MonoFlat {
 
         protected override void OnMouseEnter(EventArgs e) {
             base.OnMouseEnter(e);
-            EllipseColor = Color.FromArgb(181, 41, 42);
+            EllipseColor = Color.FromArgb(37, 113, 186);
             Refresh();
         }
         protected override void OnMouseLeave(EventArgs e) {
@@ -967,7 +967,7 @@ namespace MonoFlat {
         }
         protected override void OnMouseUp(MouseEventArgs e) {
             base.OnMouseUp(e);
-            EllipseColor = Color.FromArgb(181, 41, 42);
+            EllipseColor = Color.FromArgb(37, 113, 186);
             Refresh();
         }
 
@@ -1044,9 +1044,9 @@ namespace MonoFlat {
         public MonoFlat_LinkLabel() {
             Font = new Font("Segoe UI", 9, FontStyle.Regular);
             BackColor = Color.Transparent;
-            LinkColor = Color.FromArgb(181, 41, 42);
+            LinkColor = Color.FromArgb(37, 113, 186);
             ActiveLinkColor = Color.FromArgb(153, 34, 34);
-            VisitedLinkColor = Color.FromArgb(181, 41, 42);
+            VisitedLinkColor = Color.FromArgb(37, 113, 186);
             LinkBehavior = LinkBehavior.NeverUnderline;
         }
     }
@@ -1173,7 +1173,7 @@ namespace MonoFlat {
                 GP = RoundRectangle.RoundRect(BaseRect, 4);
                 ThumbRect = new Rectangle((_Width / 2) - 2, 4, 36, _Height - 8);
                 GP2 = RoundRectangle.RoundRect(ThumbRect, 4);
-                G.FillPath(new SolidBrush(Color.FromArgb(181, 41, 42)), GP);
+                G.FillPath(new SolidBrush(Color.FromArgb(37, 113, 186)), GP);
                 G.FillPath(new SolidBrush(Color.FromArgb(32, 41, 50)), GP2);
             }
 
@@ -1303,7 +1303,7 @@ namespace MonoFlat {
 
             if (Enabled == true) {
                 if (_Checked) {
-                    G.DrawString("a", new Font("Marlett", 16), new SolidBrush(Color.FromArgb(181, 41, 42)), new Point(-5, -3));
+                    G.DrawString("a", new Font("Marlett", 16), new SolidBrush(Color.FromArgb(37, 113, 186)), new Point(-5, -3));
                 }
             } else {
                 if (_Checked) {
@@ -1410,7 +1410,7 @@ namespace MonoFlat {
             G.FillEllipse(new SolidBrush(Color.FromArgb(66, 76, 85)), new Rectangle(0, 0, 16, 16));
 
             if (_Checked) {
-                G.DrawString("a", new Font("Marlett", 15), new SolidBrush(Color.FromArgb(181, 41, 42)), new Point(-3, -2));
+                G.DrawString("a", new Font("Marlett", 15), new SolidBrush(Color.FromArgb(37, 113, 186)), new Point(-3, -2));
             }
 
             G.DrawString(Text, Font, new SolidBrush(Color.FromArgb(116, 125, 132)), new Point(20, 0));
@@ -1531,7 +1531,7 @@ namespace MonoFlat {
         #region  EventArgs
 
         private void _Enter(object Obj, EventArgs e) {
-            P1 = new Pen(Color.FromArgb(181, 41, 42));
+            P1 = new Pen(Color.FromArgb(37, 113, 186));
             Refresh();
         }
 
@@ -1940,14 +1940,14 @@ namespace MonoFlat {
 
             G.SmoothingMode = SmoothingMode.Default;
             G.DrawRectangle(new Pen(Color.FromArgb(124, 131, 137)), PipeBorder); // Draw pipe border
-            G.FillRectangle(new SolidBrush(Color.FromArgb(181, 41, 42)), FillValue);
+            G.FillRectangle(new SolidBrush(Color.FromArgb(37, 113, 186)), FillValue);
 
             G.ResetClip();
 
             G.SmoothingMode = SmoothingMode.HighQuality;
 
-            G.FillEllipse(new SolidBrush(Color.FromArgb(181, 41, 42)), this.TrackThumb.X + (int)Math.Round(unchecked((double)this.TrackThumb.Width * ((double)this.Value / (double)this.Maximum))) - (int)Math.Round((double)this.ThumbSize.Width / 2.0), this.TrackThumb.Y + (int)Math.Round((double)this.TrackThumb.Height / 2.0) - (int)Math.Round((double)this.ThumbSize.Height / 2.0), this.ThumbSize.Width, this.ThumbSize.Height);
-            G.DrawEllipse(new Pen(Color.FromArgb(181, 41, 42)), this.TrackThumb.X + (int)Math.Round(unchecked((double)this.TrackThumb.Width * ((double)this.Value / (double)this.Maximum))) - (int)Math.Round((double)this.ThumbSize.Width / 2.0), this.TrackThumb.Y + (int)Math.Round((double)this.TrackThumb.Height / 2.0) - (int)Math.Round((double)this.ThumbSize.Height / 2.0), this.ThumbSize.Width, this.ThumbSize.Height);
+            G.FillEllipse(new SolidBrush(Color.FromArgb(37, 113, 186)), this.TrackThumb.X + (int)Math.Round(unchecked((double)this.TrackThumb.Width * ((double)this.Value / (double)this.Maximum))) - (int)Math.Round((double)this.ThumbSize.Width / 2.0), this.TrackThumb.Y + (int)Math.Round((double)this.TrackThumb.Height / 2.0) - (int)Math.Round((double)this.ThumbSize.Height / 2.0), this.ThumbSize.Width, this.ThumbSize.Height);
+            G.DrawEllipse(new Pen(Color.FromArgb(37, 113, 186)), this.TrackThumb.X + (int)Math.Round(unchecked((double)this.TrackThumb.Width * ((double)this.Value / (double)this.Maximum))) - (int)Math.Round((double)this.ThumbSize.Width / 2.0), this.TrackThumb.Y + (int)Math.Round((double)this.TrackThumb.Height / 2.0) - (int)Math.Round((double)this.ThumbSize.Height / 2.0), this.ThumbSize.Width, this.ThumbSize.Height);
         }
     }
 
