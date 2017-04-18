@@ -73,6 +73,7 @@
             this.newGameBtn.TabIndex = 2;
             this.newGameBtn.Text = "NEW GAME";
             this.newGameBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.newGameBtn.Click += new System.EventHandler(this.newGameBtn_Click);
             // 
             // controlBox
             // 

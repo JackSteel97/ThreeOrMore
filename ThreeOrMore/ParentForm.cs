@@ -13,5 +13,11 @@ namespace ThreeOrMore {
         public ParentForm() {
             InitializeComponent();
         }
+
+        private void newGameBtn_Click(object sender, EventArgs e) {
+            GameSetup setup = new GameSetup();
+            setup.Show();
+            this.Hide();
+        }
     }
 }
