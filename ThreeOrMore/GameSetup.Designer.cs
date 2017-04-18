@@ -24,17 +24,25 @@
         /// </summary>
         private void InitializeComponent() {
             this.gameSetupContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.dieFacesLbl = new MonoFlat.MonoFlat_Label();
+            this.dieFacesSlider = new MonoFlat.MonoFlat_TrackBar();
             this.playersContainerLbl = new MonoFlat.MonoFlat_HeaderLabel();
             this.addNewPlayerBtn = new MonoFlat.MonoFlat_Button();
             this.playersContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.newPlayerNameTxt = new MonoFlat.MonoFlat_TextBox();
             this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
+            this.scoreToWinLbl = new MonoFlat.MonoFlat_Label();
+            this.scoreSlider = new MonoFlat.MonoFlat_TrackBar();
             this.gameSetupContainer.SuspendLayout();
             this.SuspendLayout();
             // 
             // gameSetupContainer
             // 
             this.gameSetupContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.gameSetupContainer.Controls.Add(this.scoreToWinLbl);
+            this.gameSetupContainer.Controls.Add(this.scoreSlider);
+            this.gameSetupContainer.Controls.Add(this.dieFacesLbl);
+            this.gameSetupContainer.Controls.Add(this.dieFacesSlider);
             this.gameSetupContainer.Controls.Add(this.playersContainerLbl);
             this.gameSetupContainer.Controls.Add(this.addNewPlayerBtn);
             this.gameSetupContainer.Controls.Add(this.playersContainer);
@@ -52,6 +60,33 @@
             this.gameSetupContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.gameSetupContainer.TabIndex = 0;
             this.gameSetupContainer.Text = "Game Setup";
+            // 
+            // dieFacesLbl
+            // 
+            this.dieFacesLbl.AutoSize = true;
+            this.dieFacesLbl.BackColor = System.Drawing.Color.Transparent;
+            this.dieFacesLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.dieFacesLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.dieFacesLbl.Location = new System.Drawing.Point(1340, 141);
+            this.dieFacesLbl.Name = "dieFacesLbl";
+            this.dieFacesLbl.Size = new System.Drawing.Size(111, 15);
+            this.dieFacesLbl.TabIndex = 6;
+            this.dieFacesLbl.Text = "Each die has 6 faces";
+            // 
+            // dieFacesSlider
+            // 
+            this.dieFacesSlider.JumpToMouse = true;
+            this.dieFacesSlider.Location = new System.Drawing.Point(1224, 159);
+            this.dieFacesSlider.Maximum = 20;
+            this.dieFacesSlider.Minimum = 0;
+            this.dieFacesSlider.MinimumSize = new System.Drawing.Size(47, 22);
+            this.dieFacesSlider.Name = "dieFacesSlider";
+            this.dieFacesSlider.Size = new System.Drawing.Size(346, 22);
+            this.dieFacesSlider.TabIndex = 5;
+            this.dieFacesSlider.Value = 6;
+            this.dieFacesSlider.ValueDivison = MonoFlat.MonoFlat_TrackBar.ValueDivisor.By1;
+            this.dieFacesSlider.ValueToSet = 6F;
+            this.dieFacesSlider.ValueChanged += new MonoFlat.MonoFlat_TrackBar.ValueChangedEventHandler(this.dieFacesSlider_ValueChanged);
             // 
             // playersContainerLbl
             // 
@@ -114,6 +149,33 @@
             this.monoFlat_ControlBox1.Size = new System.Drawing.Size(100, 25);
             this.monoFlat_ControlBox1.TabIndex = 0;
             // 
+            // scoreToWinLbl
+            // 
+            this.scoreToWinLbl.AutoSize = true;
+            this.scoreToWinLbl.BackColor = System.Drawing.Color.Transparent;
+            this.scoreToWinLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.scoreToWinLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.scoreToWinLbl.Location = new System.Drawing.Point(358, 141);
+            this.scoreToWinLbl.Name = "scoreToWinLbl";
+            this.scoreToWinLbl.Size = new System.Drawing.Size(171, 15);
+            this.scoreToWinLbl.TabIndex = 8;
+            this.scoreToWinLbl.Text = "A player needs 50 points to win";
+            // 
+            // scoreSlider
+            // 
+            this.scoreSlider.JumpToMouse = true;
+            this.scoreSlider.Location = new System.Drawing.Point(268, 159);
+            this.scoreSlider.Maximum = 200;
+            this.scoreSlider.Minimum = 0;
+            this.scoreSlider.MinimumSize = new System.Drawing.Size(47, 22);
+            this.scoreSlider.Name = "scoreSlider";
+            this.scoreSlider.Size = new System.Drawing.Size(346, 22);
+            this.scoreSlider.TabIndex = 7;
+            this.scoreSlider.Value = 50;
+            this.scoreSlider.ValueDivison = MonoFlat.MonoFlat_TrackBar.ValueDivisor.By1;
+            this.scoreSlider.ValueToSet = 50F;
+            this.scoreSlider.ValueChanged += new MonoFlat.MonoFlat_TrackBar.ValueChangedEventHandler(this.scoreSlider_ValueChanged);
+            // 
             // GameSetup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,5 +202,9 @@
         private MonoFlat.MonoFlat_Button addNewPlayerBtn;
         private System.Windows.Forms.FlowLayoutPanel playersContainer;
         private MonoFlat.MonoFlat_TextBox newPlayerNameTxt;
+        private MonoFlat.MonoFlat_TrackBar dieFacesSlider;
+        private MonoFlat.MonoFlat_Label dieFacesLbl;
+        private MonoFlat.MonoFlat_Label scoreToWinLbl;
+        private MonoFlat.MonoFlat_TrackBar scoreSlider;
     }
 }
