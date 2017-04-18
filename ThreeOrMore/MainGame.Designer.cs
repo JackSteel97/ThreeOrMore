@@ -32,6 +32,8 @@
             this.die3 = new System.Windows.Forms.PictureBox();
             this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
             this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
+            this.monoFlat_ControlBox2 = new MonoFlat.MonoFlat_ControlBox();
+            this.hintLbl = new MonoFlat.MonoFlat_Label();
             this.gameContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die2)).BeginInit();
@@ -43,6 +45,8 @@
             // gameContainer
             // 
             this.gameContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.gameContainer.Controls.Add(this.hintLbl);
+            this.gameContainer.Controls.Add(this.monoFlat_ControlBox2);
             this.gameContainer.Controls.Add(this.die1);
             this.gameContainer.Controls.Add(this.die2);
             this.gameContainer.Controls.Add(this.die5);
@@ -77,7 +81,7 @@
             // die2
             // 
             this.die2.BackColor = System.Drawing.Color.DimGray;
-            this.die2.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die2.Image = ((System.Drawing.Image)(resources.GetObject("die2.Image")));
             this.die2.Location = new System.Drawing.Point(760, 300);
             this.die2.Name = "die2";
             this.die2.Size = new System.Drawing.Size(100, 100);
@@ -88,7 +92,7 @@
             // die5
             // 
             this.die5.BackColor = System.Drawing.Color.DimGray;
-            this.die5.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die5.Image = ((System.Drawing.Image)(resources.GetObject("die5.Image")));
             this.die5.Location = new System.Drawing.Point(1210, 300);
             this.die5.Name = "die5";
             this.die5.Size = new System.Drawing.Size(100, 100);
@@ -99,7 +103,7 @@
             // die4
             // 
             this.die4.BackColor = System.Drawing.Color.DimGray;
-            this.die4.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die4.Image = ((System.Drawing.Image)(resources.GetObject("die4.Image")));
             this.die4.Location = new System.Drawing.Point(1060, 300);
             this.die4.Name = "die4";
             this.die4.Size = new System.Drawing.Size(100, 100);
@@ -110,7 +114,7 @@
             // die3
             // 
             this.die3.BackColor = System.Drawing.Color.DimGray;
-            this.die3.Image = global::ThreeOrMore.Properties.Resources.Die1;
+            this.die3.Image = ((System.Drawing.Image)(resources.GetObject("die3.Image")));
             this.die3.Location = new System.Drawing.Point(910, 300);
             this.die3.Name = "die3";
             this.die3.Size = new System.Drawing.Size(100, 100);
@@ -141,6 +145,30 @@
             this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
             this.monoFlat_ControlBox1.TabIndex = 0;
             // 
+            // monoFlat_ControlBox2
+            // 
+            this.monoFlat_ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_ControlBox2.EnableHoverHighlight = false;
+            this.monoFlat_ControlBox2.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox2.EnableMinimizeButton = true;
+            this.monoFlat_ControlBox2.Location = new System.Drawing.Point(1804, 0);
+            this.monoFlat_ControlBox2.Name = "monoFlat_ControlBox2";
+            this.monoFlat_ControlBox2.Size = new System.Drawing.Size(100, 25);
+            this.monoFlat_ControlBox2.TabIndex = 7;
+            this.monoFlat_ControlBox2.Text = "monoFlat_ControlBox2";
+            // 
+            // hintLbl
+            // 
+            this.hintLbl.AutoSize = true;
+            this.hintLbl.BackColor = System.Drawing.Color.Transparent;
+            this.hintLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hintLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.hintLbl.Location = new System.Drawing.Point(907, 245);
+            this.hintLbl.Name = "hintLbl";
+            this.hintLbl.Size = new System.Drawing.Size(105, 15);
+            this.hintLbl.TabIndex = 8;
+            this.hintLbl.Text = "Click a die to roll it";
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -153,6 +181,7 @@
             this.Text = "Three or More";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MainGame_Load);
             this.gameContainer.ResumeLayout(false);
             this.gameContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).EndInit();
@@ -174,5 +203,7 @@
         private System.Windows.Forms.PictureBox die4;
         private System.Windows.Forms.PictureBox die3;
         private MonoFlat.MonoFlat_HeaderLabel turnLbl;
+        private MonoFlat.MonoFlat_Label hintLbl;
+        private MonoFlat.MonoFlat_ControlBox monoFlat_ControlBox2;
     }
 }

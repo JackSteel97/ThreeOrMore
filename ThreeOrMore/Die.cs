@@ -15,6 +15,9 @@ namespace ThreeOrMore {
                 }
                 
             }
+            set {
+                this.value = value;
+            }
         }
         public bool Rolled {
             get {
@@ -39,7 +42,7 @@ namespace ThreeOrMore {
             this.value = 1;
         }
 
-        public int roll() {
+        public virtual int roll() {
             if (!this.rolled) {
                 Random rnd = new Random();
                 int rolledNum = rnd.Next(1, this.numberOfFaces);

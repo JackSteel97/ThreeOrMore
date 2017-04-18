@@ -18,5 +18,10 @@ namespace ThreeOrMore {
         public MainGame() {
             InitializeComponent();
         }
+
+        private void MainGame_Load(object sender, EventArgs e) {
+            UIDie die = new UIDie(6, die1);
+            die.roll();
+        }
     }
 }
