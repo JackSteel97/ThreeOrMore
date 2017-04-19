@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace ThreeOrMore { 
-    class Die {
+    class Die : ICloneable {
         private int value;
         private bool rolled;
         private int numberOfFaces;
@@ -51,6 +51,10 @@ namespace ThreeOrMore {
                 return rolledNum;
             }
             throw new InvalidOperationException("Die must be rolled first");
+        }
+
+        public object Clone() {
+            return  this.MemberwiseClone();
         }
     }
 }

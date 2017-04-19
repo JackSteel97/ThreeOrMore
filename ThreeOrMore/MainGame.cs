@@ -15,7 +15,7 @@ namespace ThreeOrMore {
         public int dieFaces;
         public int scoreToWin;
         delegate void SetTextCallback(string text);
-
+        delegate void SetHistoryCallback(List<HistoryEntry> history);
         public MainGame() {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace ThreeOrMore {
             dice[4] = new UIDie(dieFaces, die5);
 
 
-            UIGame game = new UIGame(scoreToWin, players.ToArray(), dice,updateHintLbl, updateTurnLbl);
+            UIGame game = new UIGame(scoreToWin, players.ToArray(), dice,updateHintLbl, updateTurnLbl, addToHistory);
             game.startGame();
 
         }
@@ -50,6 +50,60 @@ namespace ThreeOrMore {
             } else {
                 this.turnLbl.Text = text;
             }
+        }
+        private void updateStats(List<HistoryEntry> history) {
+
+            HistoryEntry lastTurn = new HistoryEntry("");
+            for (int i = history.Count - 1; i > 0; i--) {
+                if (history[i].Dice != null) {
+                    lastTurn = history[i];
+                    avgLastTurnLbl.Text = string.Format("Average of dice last turn: {0}", Math.Round(lastTurn.getAverageofDice(), 2));
+                    totalLastTurnLbl.Text = string.Format("Total of dice last turn: {0}", lastTurn.getTotalofDice());
+                    break;
+                }
+            }
+
+            //calculate avg total
+            double total = 0;
+            double count = 0;
+            foreach (HistoryEntry h in history) {
+                if (h.Dice != null) {
+                    total += h.getTotalofDice();
+                    count++;
+                }
+
+            }
+            double avg = total / count;
+            if (avg > 0) {
+                avgTotalLbl.Text = string.Format("Average Total: {0}", Math.Round(avg, 2));
+            }
+                
+
+            
+        }
+
+        private void addToHistory(List<HistoryEntry> history) {
+            //history
+            if (this.historyContainer.InvokeRequired) {
+                SetHistoryCallback d = new SetHistoryCallback(addToHistory);
+                this.Invoke(d, new object[] { history });
+            } else {
+               
+                    MonoFlat.MonoFlat_Label lbl = new MonoFlat.MonoFlat_Label();
+                    lbl.AutoSize = true;
+                    lbl.MaximumSize = new Size(historyContainer.Width - 10, 500);
+                    lbl.Margin = new Padding(5);
+                    lbl.Text = history.Last().getReadableFormat();
+                    lbl.Parent = historyContainer;
+                    MonoFlat.MonoFlat_Separator sep = new MonoFlat.MonoFlat_Separator();
+                    sep.Margin = new Padding(0, 10, 0, 10);
+                    sep.Width = historyContainer.Width;
+                    historyContainer.Controls.Add(lbl);
+                    historyContainer.Controls.Add(sep);
+                updateStats(history);
+            }
+
+        
         }
     }
 }

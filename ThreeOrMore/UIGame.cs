@@ -16,7 +16,9 @@ namespace ThreeOrMore {
         private bool rerollUsed = false;
         private Action<string> updateHint;
         private Action<string> updateTurn;
-        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater) {
+        private Action<List<HistoryEntry>> addToHistory;
+        private List<HistoryEntry> history = new List<HistoryEntry>();
+        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater, Action<List<HistoryEntry>> historyAdder) {
             if (scoreToWin <= 0) {
                 throw new Exception("Score needed to win must be a positive integer greater than zero.");
             }
@@ -25,6 +27,9 @@ namespace ThreeOrMore {
             this.gameOver = false;
             this.updateHint = hintUpdater;
             this.updateTurn = turnUpdater;
+            this.addToHistory = historyAdder;
+
+            
 
             foreach (Player player in players) {
                 this.players.Enqueue(player);
@@ -38,7 +43,11 @@ namespace ThreeOrMore {
         }
 
         public void startGame() {
-                nextTurn();           
+            HistoryEntry h = new HistoryEntry("Game Started");
+            history.Add(h);
+            addToHistory(history);
+
+            nextTurn();           
         }
 
         private void nextTurn() {
@@ -46,6 +55,7 @@ namespace ThreeOrMore {
             updateTurnLbl();
             rerollUsed = false;
             resetDice();
+           
         }
 
         private void updateTurnLbl() {
@@ -101,6 +111,20 @@ namespace ThreeOrMore {
                     if (activePlayer.Points >= WINNING_SCORE) {
                         endGame();
                     } else {
+                        HistoryEntry h;
+                        List<UIDie> clone = new List<UIDie>();
+                        foreach (UIDie die in dice) {
+                            clone.Add((UIDie)die.Clone());
+                        }
+                        if (rerollUsed) {
+                            
+
+                            h = new HistoryEntry(turnNumber, activePlayer, clone.ToArray(), "after re-rolling");
+                        } else {
+                            h = new HistoryEntry(turnNumber, activePlayer, clone.ToArray());
+                        }                    
+                        history.Add(h);
+                        addToHistory(history);
                         players.Enqueue(activePlayer);
                         turnNumber++;
                         nextTurn();

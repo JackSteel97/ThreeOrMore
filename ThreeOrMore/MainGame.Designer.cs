@@ -24,7 +24,8 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGame));
-            this.gameContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.statsContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.historyContainer = new System.Windows.Forms.FlowLayoutPanel();
             this.hintLbl = new MonoFlat.MonoFlat_Label();
             this.monoFlat_ControlBox2 = new MonoFlat.MonoFlat_ControlBox();
             this.die1 = new System.Windows.Forms.PictureBox();
@@ -34,38 +35,59 @@
             this.die3 = new System.Windows.Forms.PictureBox();
             this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
             this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
-            this.gameContainer.SuspendLayout();
+            this.historylbl = new MonoFlat.MonoFlat_Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.avgLastTurnLbl = new MonoFlat.MonoFlat_Label();
+            this.totalLastTurnLbl = new MonoFlat.MonoFlat_Label();
+            this.avgTotalLbl = new MonoFlat.MonoFlat_Label();
+            this.statsLbl = new MonoFlat.MonoFlat_Label();
+            this.statsContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die3)).BeginInit();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // gameContainer
+            // statsContainer
             // 
-            this.gameContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
-            this.gameContainer.Controls.Add(this.hintLbl);
-            this.gameContainer.Controls.Add(this.monoFlat_ControlBox2);
-            this.gameContainer.Controls.Add(this.die1);
-            this.gameContainer.Controls.Add(this.die2);
-            this.gameContainer.Controls.Add(this.die5);
-            this.gameContainer.Controls.Add(this.die4);
-            this.gameContainer.Controls.Add(this.die3);
-            this.gameContainer.Controls.Add(this.turnLbl);
-            this.gameContainer.Controls.Add(this.monoFlat_ControlBox1);
-            this.gameContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gameContainer.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.gameContainer.Location = new System.Drawing.Point(0, 0);
-            this.gameContainer.Name = "gameContainer";
-            this.gameContainer.Padding = new System.Windows.Forms.Padding(10, 70, 10, 9);
-            this.gameContainer.RoundCorners = true;
-            this.gameContainer.Sizable = true;
-            this.gameContainer.Size = new System.Drawing.Size(1904, 1041);
-            this.gameContainer.SmartBounds = true;
-            this.gameContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.gameContainer.TabIndex = 0;
-            this.gameContainer.Text = "Three or More";
+            this.statsContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.statsContainer.Controls.Add(this.statsLbl);
+            this.statsContainer.Controls.Add(this.flowLayoutPanel1);
+            this.statsContainer.Controls.Add(this.historylbl);
+            this.statsContainer.Controls.Add(this.historyContainer);
+            this.statsContainer.Controls.Add(this.hintLbl);
+            this.statsContainer.Controls.Add(this.monoFlat_ControlBox2);
+            this.statsContainer.Controls.Add(this.die1);
+            this.statsContainer.Controls.Add(this.die2);
+            this.statsContainer.Controls.Add(this.die5);
+            this.statsContainer.Controls.Add(this.die4);
+            this.statsContainer.Controls.Add(this.die3);
+            this.statsContainer.Controls.Add(this.turnLbl);
+            this.statsContainer.Controls.Add(this.monoFlat_ControlBox1);
+            this.statsContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.statsContainer.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.statsContainer.Location = new System.Drawing.Point(0, 0);
+            this.statsContainer.Name = "statsContainer";
+            this.statsContainer.Padding = new System.Windows.Forms.Padding(10, 70, 10, 9);
+            this.statsContainer.RoundCorners = true;
+            this.statsContainer.Sizable = true;
+            this.statsContainer.Size = new System.Drawing.Size(1904, 1041);
+            this.statsContainer.SmartBounds = true;
+            this.statsContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.statsContainer.TabIndex = 0;
+            this.statsContainer.Text = "Three or More";
+            // 
+            // historyContainer
+            // 
+            this.historyContainer.AutoScroll = true;
+            this.historyContainer.AutoScrollMargin = new System.Drawing.Size(50, 0);
+            this.historyContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.historyContainer.Location = new System.Drawing.Point(1730, 300);
+            this.historyContainer.Name = "historyContainer";
+            this.historyContainer.Size = new System.Drawing.Size(161, 729);
+            this.historyContainer.TabIndex = 9;
             // 
             // hintLbl
             // 
@@ -152,7 +174,7 @@
             this.turnLbl.BackColor = System.Drawing.Color.Transparent;
             this.turnLbl.Font = new System.Drawing.Font("Segoe UI", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.turnLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.turnLbl.Location = new System.Drawing.Point(29, 101);
+            this.turnLbl.Location = new System.Drawing.Point(13, 98);
             this.turnLbl.Name = "turnLbl";
             this.turnLbl.Size = new System.Drawing.Size(344, 65);
             this.turnLbl.TabIndex = 1;
@@ -169,12 +191,85 @@
             this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
             this.monoFlat_ControlBox1.TabIndex = 0;
             // 
+            // historylbl
+            // 
+            this.historylbl.AutoSize = true;
+            this.historylbl.BackColor = System.Drawing.Color.Transparent;
+            this.historylbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.historylbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.historylbl.Location = new System.Drawing.Point(1727, 280);
+            this.historylbl.Name = "historylbl";
+            this.historylbl.Size = new System.Drawing.Size(45, 15);
+            this.historylbl.TabIndex = 10;
+            this.historylbl.Text = "History";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.avgLastTurnLbl);
+            this.flowLayoutPanel1.Controls.Add(this.totalLastTurnLbl);
+            this.flowLayoutPanel1.Controls.Add(this.avgTotalLbl);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(13, 300);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(503, 538);
+            this.flowLayoutPanel1.TabIndex = 11;
+            // 
+            // avgLastTurnLbl
+            // 
+            this.avgLastTurnLbl.AutoSize = true;
+            this.avgLastTurnLbl.BackColor = System.Drawing.Color.Transparent;
+            this.avgLastTurnLbl.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avgLastTurnLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.avgLastTurnLbl.Location = new System.Drawing.Point(30, 30);
+            this.avgLastTurnLbl.Margin = new System.Windows.Forms.Padding(30);
+            this.avgLastTurnLbl.Name = "avgLastTurnLbl";
+            this.avgLastTurnLbl.Size = new System.Drawing.Size(288, 32);
+            this.avgLastTurnLbl.TabIndex = 0;
+            this.avgLastTurnLbl.Text = "Average of dice last turn: ";
+            // 
+            // totalLastTurnLbl
+            // 
+            this.totalLastTurnLbl.AutoSize = true;
+            this.totalLastTurnLbl.BackColor = System.Drawing.Color.Transparent;
+            this.totalLastTurnLbl.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalLastTurnLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.totalLastTurnLbl.Location = new System.Drawing.Point(30, 122);
+            this.totalLastTurnLbl.Margin = new System.Windows.Forms.Padding(30);
+            this.totalLastTurnLbl.Name = "totalLastTurnLbl";
+            this.totalLastTurnLbl.Size = new System.Drawing.Size(252, 32);
+            this.totalLastTurnLbl.TabIndex = 1;
+            this.totalLastTurnLbl.Text = "Total of dice last turn: ";
+            // 
+            // avgTotalLbl
+            // 
+            this.avgTotalLbl.AutoSize = true;
+            this.avgTotalLbl.BackColor = System.Drawing.Color.Transparent;
+            this.avgTotalLbl.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.avgTotalLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.avgTotalLbl.Location = new System.Drawing.Point(30, 214);
+            this.avgTotalLbl.Margin = new System.Windows.Forms.Padding(30);
+            this.avgTotalLbl.Name = "avgTotalLbl";
+            this.avgTotalLbl.Size = new System.Drawing.Size(172, 32);
+            this.avgTotalLbl.TabIndex = 2;
+            this.avgTotalLbl.Text = "Average Total: ";
+            // 
+            // statsLbl
+            // 
+            this.statsLbl.AutoSize = true;
+            this.statsLbl.BackColor = System.Drawing.Color.Transparent;
+            this.statsLbl.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.statsLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.statsLbl.Location = new System.Drawing.Point(17, 255);
+            this.statsLbl.Name = "statsLbl";
+            this.statsLbl.Size = new System.Drawing.Size(127, 40);
+            this.statsLbl.TabIndex = 12;
+            this.statsLbl.Text = "Statistics";
+            // 
             // MainGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.gameContainer);
+            this.Controls.Add(this.statsContainer);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -182,20 +277,22 @@
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainGame_Load);
-            this.gameContainer.ResumeLayout(false);
-            this.gameContainer.PerformLayout();
+            this.statsContainer.ResumeLayout(false);
+            this.statsContainer.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.die2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.die5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.die4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.die3)).EndInit();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MonoFlat.MonoFlat_ThemeContainer gameContainer;
+        private MonoFlat.MonoFlat_ThemeContainer statsContainer;
         private MonoFlat.MonoFlat_ControlBox monoFlat_ControlBox1;
         private System.Windows.Forms.PictureBox die1;
         private System.Windows.Forms.PictureBox die2;
@@ -205,5 +302,12 @@
         private MonoFlat.MonoFlat_HeaderLabel turnLbl;
         private MonoFlat.MonoFlat_Label hintLbl;
         private MonoFlat.MonoFlat_ControlBox monoFlat_ControlBox2;
+        private System.Windows.Forms.FlowLayoutPanel historyContainer;
+        private MonoFlat.MonoFlat_Label historylbl;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private MonoFlat.MonoFlat_Label avgLastTurnLbl;
+        private MonoFlat.MonoFlat_Label totalLastTurnLbl;
+        private MonoFlat.MonoFlat_Label avgTotalLbl;
+        private MonoFlat.MonoFlat_Label statsLbl;
     }
 }

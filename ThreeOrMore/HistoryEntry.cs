@@ -51,8 +51,9 @@ namespace ThreeOrMore {
             }
             if(activePlayer != null) {
                 output += string.Format("Player: {0} \n", activePlayer.Name);
+                output += string.Format("Score: {0} \n", activePlayer.Points);
             }
-            if (dice.Length > 0) {
+            if (dice != null) {
                 output += "Dice: ";
                 foreach (Die die in dice) {
                     output += string.Format("{0} ", die.Value);
