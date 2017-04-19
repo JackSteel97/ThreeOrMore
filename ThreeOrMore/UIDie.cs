@@ -7,6 +7,10 @@ namespace ThreeOrMore {
    class UIDie : Die {
 
         private PictureBox dieImage;
+        public PictureBox DieImage {
+            get;
+            set;
+        }
         private int countFrom;
         private System.Timers.Timer dieTimer;
         private int intermediateValue;

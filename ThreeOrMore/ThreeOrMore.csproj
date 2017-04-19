@@ -91,6 +91,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UIDie.cs" />
+    <Compile Include="UIGame.cs" />
     <EmbeddedResource Include="GameSetup.resx">
       <DependentUpon>GameSetup.cs</DependentUpon>
     </EmbeddedResource>
