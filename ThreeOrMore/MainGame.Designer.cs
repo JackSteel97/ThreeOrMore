@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGame));
             this.gameContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.hintLbl = new MonoFlat.MonoFlat_Label();
+            this.monoFlat_ControlBox2 = new MonoFlat.MonoFlat_ControlBox();
             this.die1 = new System.Windows.Forms.PictureBox();
             this.die2 = new System.Windows.Forms.PictureBox();
             this.die5 = new System.Windows.Forms.PictureBox();
@@ -32,8 +34,6 @@
             this.die3 = new System.Windows.Forms.PictureBox();
             this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
             this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
-            this.monoFlat_ControlBox2 = new MonoFlat.MonoFlat_ControlBox();
-            this.hintLbl = new MonoFlat.MonoFlat_Label();
             this.gameContainer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.die2)).BeginInit();
@@ -66,6 +66,30 @@
             this.gameContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.gameContainer.TabIndex = 0;
             this.gameContainer.Text = "Three or More";
+            // 
+            // hintLbl
+            // 
+            this.hintLbl.BackColor = System.Drawing.Color.Transparent;
+            this.hintLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.hintLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.hintLbl.Location = new System.Drawing.Point(0, 245);
+            this.hintLbl.Name = "hintLbl";
+            this.hintLbl.Size = new System.Drawing.Size(1920, 50);
+            this.hintLbl.TabIndex = 8;
+            this.hintLbl.Text = "Click a die to roll it";
+            this.hintLbl.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // monoFlat_ControlBox2
+            // 
+            this.monoFlat_ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.monoFlat_ControlBox2.EnableHoverHighlight = false;
+            this.monoFlat_ControlBox2.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox2.EnableMinimizeButton = true;
+            this.monoFlat_ControlBox2.Location = new System.Drawing.Point(1792, 15);
+            this.monoFlat_ControlBox2.Name = "monoFlat_ControlBox2";
+            this.monoFlat_ControlBox2.Size = new System.Drawing.Size(100, 25);
+            this.monoFlat_ControlBox2.TabIndex = 7;
+            this.monoFlat_ControlBox2.Text = "monoFlat_ControlBox2";
             // 
             // die1
             // 
@@ -144,30 +168,6 @@
             this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";
             this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
             this.monoFlat_ControlBox1.TabIndex = 0;
-            // 
-            // monoFlat_ControlBox2
-            // 
-            this.monoFlat_ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_ControlBox2.EnableHoverHighlight = false;
-            this.monoFlat_ControlBox2.EnableMaximizeButton = true;
-            this.monoFlat_ControlBox2.EnableMinimizeButton = true;
-            this.monoFlat_ControlBox2.Location = new System.Drawing.Point(1804, 0);
-            this.monoFlat_ControlBox2.Name = "monoFlat_ControlBox2";
-            this.monoFlat_ControlBox2.Size = new System.Drawing.Size(100, 25);
-            this.monoFlat_ControlBox2.TabIndex = 7;
-            this.monoFlat_ControlBox2.Text = "monoFlat_ControlBox2";
-            // 
-            // hintLbl
-            // 
-            this.hintLbl.AutoSize = true;
-            this.hintLbl.BackColor = System.Drawing.Color.Transparent;
-            this.hintLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.hintLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
-            this.hintLbl.Location = new System.Drawing.Point(907, 245);
-            this.hintLbl.Name = "hintLbl";
-            this.hintLbl.Size = new System.Drawing.Size(105, 15);
-            this.hintLbl.TabIndex = 8;
-            this.hintLbl.Text = "Click a die to roll it";
             // 
             // MainGame
             // 

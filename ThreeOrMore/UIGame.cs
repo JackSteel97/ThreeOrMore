@@ -12,16 +12,19 @@ namespace ThreeOrMore {
         private bool gameOver;
         private int turnNumber;
         private int WINNING_SCORE;
-        private MonoFlat.MonoFlat_HeaderLabel turnLbl;
-
-        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, MonoFlat.MonoFlat_HeaderLabel turnLbl) {
+        private Player activePlayer;
+        private bool rerollUsed = false;
+        private Action<string> updateHint;
+        private Action<string> updateTurn;
+        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater) {
             if (scoreToWin <= 0) {
                 throw new Exception("Score needed to win must be a positive integer greater than zero.");
             }
             this.WINNING_SCORE = scoreToWin;
             this.turnNumber = 1;
             this.gameOver = false;
-           
+            this.updateHint = hintUpdater;
+            this.updateTurn = turnUpdater;
 
             foreach (Player player in players) {
                 this.players.Enqueue(player);
@@ -39,16 +42,17 @@ namespace ThreeOrMore {
         }
 
         private void nextTurn() {
-            Player activePlayer = players.Dequeue();
-            updateTurnLbl(activePlayer);
+            activePlayer = players.Dequeue();
+            updateTurnLbl();
+            rerollUsed = false;
             resetDice();
         }
 
-        private void updateTurnLbl(Player activePlayer) {
+        private void updateTurnLbl() {
             if (activePlayer.Name[activePlayer.Name.Length - 1].ToString().ToLower() == "s") {
-                turnLbl.Text = activePlayer.Name + "' Turn";
+                updateTurn(activePlayer.Name + "' Turn");
             } else {
-                turnLbl.Text = activePlayer.Name + "'s Turn";
+                updateTurn(activePlayer.Name + "'s Turn");
             }
         }
 
@@ -68,7 +72,101 @@ namespace ThreeOrMore {
             return true;
         }
 
+        private void aDieFinished() {
+            //have all dice finished?
+            if (allDiceRolled()) {
+                bool reroll;
+                Dictionary<int, int> numberOccurrences = countDiceValues();
+                activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll);
+                if (reroll && !rerollUsed) {
+                    rerollUsed = true;
+                    alertToTwoMatches();
+                    //find numbers that match
+                    int doubleNumber = 0;
+                    foreach (KeyValuePair<int, int> entry in numberOccurrences) {
+                        if (entry.Value == 2) {
+                            doubleNumber = entry.Key;
+                            break;
+                        }
+                    }
+                    //reset other dice
+                    foreach (UIDie die in dice) {
+                        if (die.Value != doubleNumber) {
+                            die.Rolled = false;
+                            die.DieImage.BackColor = System.Drawing.Color.White;
+                        }
+                    }
+                } else {
+                    outputNextTurn();
+                    if (activePlayer.Points >= WINNING_SCORE) {
+                        endGame();
+                    } else {
+                        players.Enqueue(activePlayer);
+                        turnNumber++;
+                        nextTurn();
+                    }
+                }
+
+               
+            }
+        }
+
+        private void alertToTwoMatches() {
+            updateHint("You have two of a kind and may re-throw the remaining dice.");
+        }
+
+        private void outputNextTurn() {
+            if(activePlayer.Name[activePlayer.Name.Length-1].ToString().ToLower() == "s") {
+                updateHint(string.Format("{0}' turn over, their current score is: {1}", activePlayer.Name, activePlayer.Points));
+            }else {
+                updateHint(string.Format("{0}'s turn over, their current score is: {1}", activePlayer.Name, activePlayer.Points));
+            }         
+        }
+
+        private void endGame() {
+            gameOver = true;
+            updateHint(string.Format("Game Over! {0} won with a score of {1} in {2} turns.", activePlayer.Name, activePlayer.Points, turnNumber));
+        }
+
+        private Dictionary<int, int> countDiceValues() {
+            Dictionary<int, int> numberOccurrences = new Dictionary<int, int>();
+            foreach (UIDie die in dice) {
+                int value = die.Value;
+                if (numberOccurrences.ContainsKey(value)) {
+                    numberOccurrences[value]++;
+                } else {
+                    numberOccurrences.Add(value, 1);
+                }
+            }
+            return numberOccurrences;
+        }
+
+        private int analyseDiceForScore(Dictionary<int, int> numberOccurrences, out bool reroll) {
+            reroll = false;
+            if (numberOccurrences.ContainsValue(5)) {
+                //5 of a kind
+                return 12;
+            } else if (numberOccurrences.ContainsValue(4)) {
+                //4 of a kind
+                return 6;
+            } else if (numberOccurrences.ContainsValue(3)) {
+                //3 of a kind
+                return 3;
+            } else if (numberOccurrences.ContainsValue(2)) {
+                //2 of a kind        
+                reroll = true;
+            }
+            return 0;
+        }
+
         private void die_MouseUp(object sender, MouseEventArgs e) {
+            PictureBox img = (PictureBox)sender;
+            
+            int dieNum = Convert.ToInt32(img.Name[img.Name.Length - 1].ToString()) - 1;
+            if (!dice[dieNum].Rolled && !gameOver) {
+                dice[dieNum].roll(aDieFinished);
+            }
+            
 
         }
     }

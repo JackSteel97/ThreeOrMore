@@ -5,11 +5,15 @@ using ThreeOrMore.Properties;
 
 namespace ThreeOrMore {
    class UIDie : Die {
-
+        private Action dieFinishedCallback;
         private PictureBox dieImage;
         public PictureBox DieImage {
-            get;
-            set;
+            get {
+                return this.dieImage;
+            }
+            set {
+                this.dieImage = value;
+            }
         }
         private int countFrom;
         private System.Timers.Timer dieTimer;
@@ -19,11 +23,11 @@ namespace ThreeOrMore {
             this.dieImage = dieImage;
         }
 
-        public override int roll() {
+        public int roll(Action callback) {
             if (!this.Rolled) {
                 Random rnd = new Random();
                 this.countFrom = rnd.Next(20, 80);
-
+                this.dieFinishedCallback = callback;
                 dieTimer = new System.Timers.Timer();
                 dieTimer.Enabled = true;
                 dieTimer.Interval = 25;
@@ -68,7 +72,9 @@ namespace ThreeOrMore {
                 dieTimer.Enabled = false;
                 dieTimer.Stop();
                 Value = intermediateValue;
+                this.dieImage.BackColor = System.Drawing.Color.DimGray;      
                 Rolled = true;
+                dieFinishedCallback();
             }
 
         }

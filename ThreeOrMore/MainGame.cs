@@ -14,6 +14,7 @@ namespace ThreeOrMore {
         public List<Player> players;
         public int dieFaces;
         public int scoreToWin;
+        delegate void SetTextCallback(string text);
 
         public MainGame() {
             InitializeComponent();
@@ -28,6 +29,27 @@ namespace ThreeOrMore {
             dice[4] = new UIDie(dieFaces, die5);
 
 
+            UIGame game = new UIGame(scoreToWin, players.ToArray(), dice,updateHintLbl, updateTurnLbl);
+            game.startGame();
+
+        }
+
+        private void updateHintLbl(string text) {
+            if (this.hintLbl.InvokeRequired) {
+                SetTextCallback d = new SetTextCallback(updateHintLbl);
+                this.Invoke(d, new object[] { text });
+            } else {
+                this.hintLbl.Text = text;
+            }
+        }
+
+        private void updateTurnLbl(string text) {
+            if (this.turnLbl.InvokeRequired) {
+                SetTextCallback d = new SetTextCallback(updateTurnLbl);
+                this.Invoke(d, new object[] { text });
+            } else {
+                this.turnLbl.Text = text;
+            }
         }
     }
 }
