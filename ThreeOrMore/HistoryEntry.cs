@@ -1,8 +1,8 @@
 ﻿using System;
 
-
 namespace ThreeOrMore {
-    class HistoryEntry {
+
+    internal class HistoryEntry {
         private int turnNumber;
         private Player activePlayer;
         private Die[] dice;
@@ -13,11 +13,13 @@ namespace ThreeOrMore {
                 return this.turnNumber;
             }
         }
+
         public Player ActivePlayer {
             get {
                 return this.activePlayer;
             }
         }
+
         public Die[] Dice {
             get {
                 return this.dice;
@@ -31,7 +33,7 @@ namespace ThreeOrMore {
         }
 
         public HistoryEntry(int turnNumber, Player activePlayer, Die[] dice, string notes = "") {
-            if(activePlayer == null || dice == null || dice.Length == 0) {
+            if (activePlayer == null || dice == null || dice.Length == 0) {
                 throw new ArgumentException("No parameters can be null or zero-length");
             }
             this.turnNumber = turnNumber;
@@ -49,7 +51,7 @@ namespace ThreeOrMore {
             if (turnNumber != 0) {
                 output += string.Format("Turn: {0} \n", turnNumber);
             }
-            if(activePlayer != null) {
+            if (activePlayer != null) {
                 output += string.Format("Player: {0} \n", activePlayer.Name);
                 output += string.Format("Score: {0} \n", activePlayer.Points);
             }
@@ -67,7 +69,7 @@ namespace ThreeOrMore {
 
         public double getAverageofDice() {
             double total = 0;
-            foreach(Die die in dice) {
+            foreach (Die die in dice) {
                 total += die.Value;
             }
             return Math.Round(total / dice.Length, 1);

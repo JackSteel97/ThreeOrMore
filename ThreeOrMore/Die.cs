@@ -1,7 +1,8 @@
 ﻿using System;
 
-namespace ThreeOrMore { 
-    class Die : ICloneable {
+namespace ThreeOrMore {
+
+    internal class Die : ICloneable {
         private int value;
         private bool rolled;
         private int numberOfFaces;
@@ -10,15 +11,15 @@ namespace ThreeOrMore {
             get {
                 if (this.rolled) {
                     return this.value;
-                }else {
+                } else {
                     throw new InvalidOperationException("Die must be rolled first.");
                 }
-                
             }
             set {
                 this.value = value;
             }
         }
+
         public bool Rolled {
             get {
                 return this.rolled;
@@ -27,6 +28,7 @@ namespace ThreeOrMore {
                 this.rolled = value;
             }
         }
+
         public int NumberOfFaces {
             get {
                 return this.numberOfFaces;
@@ -45,7 +47,7 @@ namespace ThreeOrMore {
         public virtual int roll() {
             if (!this.rolled) {
                 Random rnd = new Random();
-                int rolledNum = rnd.Next(1, this.numberOfFaces+1);
+                int rolledNum = rnd.Next(1, this.numberOfFaces + 1);
                 this.value = rolledNum;
                 this.rolled = true;
                 return rolledNum;
@@ -54,7 +56,7 @@ namespace ThreeOrMore {
         }
 
         public object Clone() {
-            return  this.MemberwiseClone();
+            return this.MemberwiseClone();
         }
     }
 }

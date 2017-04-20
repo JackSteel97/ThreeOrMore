@@ -1,12 +1,12 @@
 ﻿#region Imports
 
 using System;
-using System.Drawing;
-using System.Windows.Forms;
-using System.Drawing.Drawing2D;
 using System.ComponentModel;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Windows.Forms;
 
-#endregion
+#endregion Imports
 
 //|------DO-NOT-REMOVE------|
 //
@@ -20,9 +20,10 @@ using System.ComponentModel;
 
 namespace MonoFlat {
 
-    #region  RoundRectangle
+    #region RoundRectangle
 
-    sealed class RoundRectangle {
+    internal sealed class RoundRectangle {
+
         public static GraphicsPath RoundRect(Rectangle Rectangle, int Curve) {
             GraphicsPath P = new GraphicsPath();
             int ArcRectangleWidth = Curve * 2;
@@ -35,13 +36,13 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
+    #endregion RoundRectangle
 
-    #region  ThemeContainer
+    #region ThemeContainer
 
     public class MonoFlat_ThemeContainer : ContainerControl {
 
-        #region  Enums
+        #region Enums
 
         public enum MouseState {
             None = 0,
@@ -50,8 +51,9 @@ namespace MonoFlat {
             Block = 3
         }
 
-        #endregion
-        #region  Variables
+        #endregion Enums
+
+        #region Variables
 
         private Rectangle HeaderRect;
         protected MouseState State;
@@ -60,10 +62,12 @@ namespace MonoFlat {
         private bool Cap = false;
         private bool HasShown;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         private bool _Sizable = true;
+
         public bool Sizable {
             get {
                 return _Sizable;
@@ -74,6 +78,7 @@ namespace MonoFlat {
         }
 
         private bool _SmartBounds = true;
+
         public bool SmartBounds {
             get {
                 return _SmartBounds;
@@ -84,6 +89,7 @@ namespace MonoFlat {
         }
 
         private bool _RoundCorners = true;
+
         public bool RoundCorners {
             get {
                 return _RoundCorners;
@@ -95,6 +101,7 @@ namespace MonoFlat {
         }
 
         private bool _IsParentForm;
+
         protected bool IsParentForm {
             get {
                 return _IsParentForm;
@@ -111,6 +118,7 @@ namespace MonoFlat {
         }
 
         private bool _ControlMode;
+
         protected bool ControlMode {
             get {
                 return _ControlMode;
@@ -122,6 +130,7 @@ namespace MonoFlat {
         }
 
         private FormStartPosition _StartPosition;
+
         public FormStartPosition StartPosition {
             get {
                 if (_IsParentForm && !_ControlMode) {
@@ -139,8 +148,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         protected sealed override void OnParentChanged(EventArgs e) {
             base.OnParentChanged(e);
@@ -237,8 +247,9 @@ namespace MonoFlat {
             HasShown = true;
         }
 
-        #endregion
-        #region  Mouse & Size
+        #endregion EventArgs
+
+        #region Mouse & Size
 
         private void SetState(MouseState current) {
             State = current;
@@ -250,6 +261,7 @@ namespace MonoFlat {
         private bool B2x;
         private bool B3;
         private bool B4;
+
         private int GetIndex() {
             GetIndexPoint = PointToClient(MousePosition);
             B1x = GetIndexPoint.X < 7;
@@ -286,6 +298,7 @@ namespace MonoFlat {
 
         private int Current;
         private int Previous;
+
         private void InvalidateMouse() {
             Current = GetIndex();
             if (Current == Previous) {
@@ -297,12 +310,15 @@ namespace MonoFlat {
                 case 0:
                     Cursor = Cursors.Default;
                     break;
+
                 case 6:
                     Cursor = Cursors.SizeNS;
                     break;
+
                 case 8:
                     Cursor = Cursors.SizeNWSE;
                     break;
+
                 case 7:
                     Cursor = Cursors.SizeNESW;
                     break;
@@ -310,6 +326,7 @@ namespace MonoFlat {
         }
 
         private Message[] Messages = new Message[9];
+
         private void InitializeMessages() {
             Messages[0] = Message.Create(Parent.Handle, 161, new IntPtr(2), IntPtr.Zero);
             for (int I = 1; I <= 8; I++) {
@@ -349,6 +366,7 @@ namespace MonoFlat {
         }
 
         private bool WM_LMBUTTONDOWN;
+
         protected override void WndProc(ref Message m) {
             base.WndProc(ref m);
 
@@ -368,7 +386,7 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
+        #endregion Mouse & Size
 
         protected override void CreateHandle() {
             base.CreateHandle();
@@ -462,10 +480,11 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
+    #endregion ThemeContainer
+
     #region ControlBox
 
-    class MonoFlat_ControlBox : Control {
+    internal class MonoFlat_ControlBox : Control {
 
         #region Enums
 
@@ -476,15 +495,18 @@ namespace MonoFlat {
             None
         }
 
-        #endregion
+        #endregion Enums
+
         #region Variables
 
         private ButtonHoverState ButtonHState = ButtonHoverState.None;
 
-        #endregion
+        #endregion Variables
+
         #region Properties
 
         private bool _EnableMaximize = true;
+
         public bool EnableMaximizeButton {
             get { return _EnableMaximize; }
             set {
@@ -494,6 +516,7 @@ namespace MonoFlat {
         }
 
         private bool _EnableMinimize = true;
+
         public bool EnableMinimizeButton {
             get { return _EnableMinimize; }
             set {
@@ -503,6 +526,7 @@ namespace MonoFlat {
         }
 
         private bool _EnableHoverHighlight = false;
+
         public bool EnableHoverHighlight {
             get { return _EnableHoverHighlight; }
             set {
@@ -511,7 +535,8 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
+        #endregion Properties
+
         #region EventArgs
 
         protected override void OnResize(EventArgs e) {
@@ -545,11 +570,13 @@ namespace MonoFlat {
                 case ButtonHoverState.Close:
                     Parent.FindForm().Close();
                     break;
+
                 case ButtonHoverState.Minimize:
                     if (_EnableMinimize == true) {
                         Parent.FindForm().WindowState = FormWindowState.Minimized;
                     }
                     break;
+
                 case ButtonHoverState.Maximize:
                     if (_EnableMaximize == true) {
                         if (Parent.FindForm().WindowState == FormWindowState.Normal) {
@@ -561,6 +588,7 @@ namespace MonoFlat {
                     break;
             }
         }
+
         protected override void OnMouseLeave(EventArgs e) {
             base.OnMouseLeave(e);
             ButtonHState = ButtonHoverState.None;
@@ -572,7 +600,7 @@ namespace MonoFlat {
             Focus();
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_ControlBox()
             : base() {
@@ -598,16 +626,19 @@ namespace MonoFlat {
                     case ButtonHoverState.None:
                         G.Clear(Color.FromArgb(37, 113, 186));
                         break;
+
                     case ButtonHoverState.Minimize:
                         if (_EnableMinimize == true) {
                             G.FillRectangle(new SolidBrush(Color.FromArgb(156, 35, 35)), new Rectangle(3, 0, 30, Height));
                         }
                         break;
+
                     case ButtonHoverState.Maximize:
                         if (_EnableMaximize == true) {
                             G.FillRectangle(new SolidBrush(Color.FromArgb(156, 35, 35)), new Rectangle(35, 0, 30, Height));
                         }
                         break;
+
                     case ButtonHoverState.Close:
                         G.FillRectangle(new SolidBrush(Color.FromArgb(156, 35, 35)), new Rectangle(66, 0, 35, Height));
                         break;
@@ -626,6 +657,7 @@ namespace MonoFlat {
                         G.DrawString("2", new Font("Marlett", 12), new SolidBrush(Color.LightGray), new Point(51, 7), new StringFormat { Alignment = StringAlignment.Center });
                     }
                     break;
+
                 case FormWindowState.Normal:
                     if (_EnableMaximize == true) {
                         G.DrawString("1", new Font("Marlett", 12), new SolidBrush(Color.FromArgb(255, 254, 255)), new Point(51, 7), new StringFormat { Alignment = StringAlignment.Center });
@@ -644,12 +676,13 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Button
+    #endregion ControlBox
+
+    #region Button
 
     public class MonoFlat_Button : Control {
 
-        #region  Variables
+        #region Variables
 
         private int MouseState;
         private GraphicsPath Shape;
@@ -664,8 +697,9 @@ namespace MonoFlat {
         private Color _TextColor; // VBConversions Note: Initial value cannot be assigned here since it is non-static.  Assignment has been moved to the class constructors.
         private ContentAlignment _ImageAlign = ContentAlignment.MiddleLeft;
 
-        #endregion
-        #region  Image Designer
+        #endregion Variables
+
+        #region Image Designer
 
         private static PointF ImageLocation(StringFormat SF, SizeF Area, SizeF ImageArea) {
             PointF MyPoint = new PointF();
@@ -673,22 +707,25 @@ namespace MonoFlat {
                 case StringAlignment.Center:
                     MyPoint.X = (float)((Area.Width - ImageArea.Width) / 2);
                     break;
+
                 case StringAlignment.Near:
                     MyPoint.X = 2;
                     break;
+
                 case StringAlignment.Far:
                     MyPoint.X = Area.Width - ImageArea.Width - 2;
                     break;
-
             }
 
             switch (SF.LineAlignment) {
                 case StringAlignment.Center:
                     MyPoint.Y = (float)((Area.Height - ImageArea.Height) / 2);
                     break;
+
                 case StringAlignment.Near:
                     MyPoint.Y = 2;
                     break;
+
                 case StringAlignment.Far:
                     MyPoint.Y = Area.Height - ImageArea.Height - 2;
                     break;
@@ -703,34 +740,42 @@ namespace MonoFlat {
                     SF.LineAlignment = StringAlignment.Center;
                     SF.Alignment = StringAlignment.Center;
                     break;
+
                 case ContentAlignment.MiddleLeft:
                     SF.LineAlignment = StringAlignment.Center;
                     SF.Alignment = StringAlignment.Near;
                     break;
+
                 case ContentAlignment.MiddleRight:
                     SF.LineAlignment = StringAlignment.Center;
                     SF.Alignment = StringAlignment.Far;
                     break;
+
                 case ContentAlignment.TopCenter:
                     SF.LineAlignment = StringAlignment.Near;
                     SF.Alignment = StringAlignment.Center;
                     break;
+
                 case ContentAlignment.TopLeft:
                     SF.LineAlignment = StringAlignment.Near;
                     SF.Alignment = StringAlignment.Near;
                     break;
+
                 case ContentAlignment.TopRight:
                     SF.LineAlignment = StringAlignment.Near;
                     SF.Alignment = StringAlignment.Far;
                     break;
+
                 case ContentAlignment.BottomCenter:
                     SF.LineAlignment = StringAlignment.Far;
                     SF.Alignment = StringAlignment.Center;
                     break;
+
                 case ContentAlignment.BottomLeft:
                     SF.LineAlignment = StringAlignment.Far;
                     SF.Alignment = StringAlignment.Near;
                     break;
+
                 case ContentAlignment.BottomRight:
                     SF.LineAlignment = StringAlignment.Far;
                     SF.Alignment = StringAlignment.Far;
@@ -739,8 +784,9 @@ namespace MonoFlat {
             return SF;
         }
 
-        #endregion
-        #region  Properties
+        #endregion Image Designer
+
+        #region Properties
 
         public Image Image {
             get {
@@ -794,14 +840,16 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         protected override void OnMouseUp(MouseEventArgs e) {
             MouseState = 0;
             Invalidate();
             base.OnMouseUp(e);
         }
+
         protected override void OnMouseDown(MouseEventArgs e) {
             MouseState = 1;
             Focus();
@@ -820,7 +868,7 @@ namespace MonoFlat {
             base.OnTextChanged(e);
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_Button() {
             SetStyle((System.Windows.Forms.ControlStyles)(ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.SupportsTransparentBackColor | ControlStyles.UserPaint), true);
@@ -838,7 +886,6 @@ namespace MonoFlat {
         protected override void OnResize(System.EventArgs e) {
             base.OnResize(e);
             if (Width > 0 && Height > 0) {
-
                 Shape = new GraphicsPath();
                 R1 = new Rectangle(0, 0, Width, Height);
 
@@ -879,6 +926,7 @@ namespace MonoFlat {
                         });
                     }
                     break;
+
                 case 1:
                     //Pressed
                     G.FillPath(PressedGB, Shape);
@@ -904,19 +952,21 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Social Button
+    #endregion Button
+
+    #region Social Button
 
     public class MonoFlat_SocialButton : Control {
 
-        #region  Variables
+        #region Variables
 
         private Image _Image;
         private Size _ImageSize;
         private Color EllipseColor; // VBConversions Note: Initial value cannot be assigned here since it is non-static.  Assignment has been moved to the class constructors.
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public Image Image {
             get {
@@ -940,8 +990,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         protected override void OnResize(EventArgs e) {
             base.OnResize(e);
@@ -953,6 +1004,7 @@ namespace MonoFlat {
             EllipseColor = Color.FromArgb(37, 113, 186);
             Refresh();
         }
+
         protected override void OnMouseLeave(EventArgs e) {
             base.OnMouseLeave(e);
             EllipseColor = Color.FromArgb(66, 76, 85);
@@ -965,14 +1017,16 @@ namespace MonoFlat {
             Focus();
             Refresh();
         }
+
         protected override void OnMouseUp(MouseEventArgs e) {
             base.OnMouseUp(e);
             EllipseColor = Color.FromArgb(37, 113, 186);
             Refresh();
         }
 
-        #endregion
-        #region  Image Designer
+        #endregion EventArgs
+
+        #region Image Designer
 
         private static PointF ImageLocation(StringFormat SF, SizeF Area, SizeF ImageArea) {
             PointF MyPoint = new PointF();
@@ -1001,7 +1055,7 @@ namespace MonoFlat {
             return SF;
         }
 
-        #endregion
+        #endregion Image Designer
 
         public MonoFlat_SocialButton() {
             DoubleBuffered = true;
@@ -1025,8 +1079,9 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Label
+    #endregion Social Button
+
+    #region Label
 
     public class MonoFlat_Label : Label {
 
@@ -1037,8 +1092,10 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Link Label
+    #endregion Label
+
+    #region Link Label
+
     public class MonoFlat_LinkLabel : LinkLabel {
 
         public MonoFlat_LinkLabel() {
@@ -1051,8 +1108,9 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Header Label
+    #endregion Link Label
+
+    #region Header Label
 
     public class MonoFlat_HeaderLabel : Label {
 
@@ -1063,13 +1121,14 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Toggle Button
+    #endregion Header Label
+
+    #region Toggle Button
 
     [DefaultEvent("ToggledChanged")]
     public class MonoFlat_Toggle : Control {
 
-        #region  Enums
+        #region Enums
 
         public enum _Type {
             CheckMark,
@@ -1078,10 +1137,12 @@ namespace MonoFlat {
             IO
         }
 
-        #endregion
-        #region  Variables
+        #endregion Enums
+
+        #region Variables
 
         public delegate void ToggledChangedEventHandler();
+
         private ToggledChangedEventHandler ToggledChangedEvent;
 
         public event ToggledChangedEventHandler ToggledChanged {
@@ -1099,8 +1160,9 @@ namespace MonoFlat {
         private int _Width;
         private int _Height;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public bool Toggled {
             get {
@@ -1124,8 +1186,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         protected override void OnResize(EventArgs e) {
             base.OnResize(e);
@@ -1138,7 +1201,7 @@ namespace MonoFlat {
             Focus();
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_Toggle() {
             SetStyle((System.Windows.Forms.ControlStyles)(ControlStyles.AllPaintingInWmPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw | ControlStyles.UserPaint), true);
@@ -1186,6 +1249,7 @@ namespace MonoFlat {
                         G.DrawString("r", new Font("Marlett", 14, FontStyle.Regular), Brushes.DimGray, Bar.X + 59, Bar.Y + 18, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
                     }
                     break;
+
                 case _Type.OnOff:
                     if (Toggled) {
                         G.DrawString("ON", new Font("Segoe UI", 12, FontStyle.Regular), Brushes.WhiteSmoke, Bar.X + 18, Bar.Y + 16, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
@@ -1193,6 +1257,7 @@ namespace MonoFlat {
                         G.DrawString("OFF", new Font("Segoe UI", 12, FontStyle.Regular), Brushes.DimGray, Bar.X + 57, Bar.Y + 16, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
                     }
                     break;
+
                 case _Type.YesNo:
                     if (Toggled) {
                         G.DrawString("YES", new Font("Segoe UI", 12, FontStyle.Regular), Brushes.WhiteSmoke, Bar.X + 19, Bar.Y + 16, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
@@ -1200,6 +1265,7 @@ namespace MonoFlat {
                         G.DrawString("NO", new Font("Segoe UI", 12, FontStyle.Regular), Brushes.DimGray, Bar.X + 56, Bar.Y + 16, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
                     }
                     break;
+
                 case _Type.IO:
                     if (Toggled) {
                         G.DrawString("I", new Font("Segoe UI", 12, FontStyle.Regular), Brushes.WhiteSmoke, Bar.X + 18, Bar.Y + 16, new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center });
@@ -1211,20 +1277,22 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  CheckBox
+    #endregion Toggle Button
+
+    #region CheckBox
 
     [DefaultEvent("CheckedChanged")]
     public class MonoFlat_CheckBox : Control {
 
-        #region  Variables
+        #region Variables
 
         private int X;
         private bool _Checked = false;
         private GraphicsPath Shape;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public bool Checked {
             get {
@@ -1236,10 +1304,12 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         public delegate void CheckedChangedEventHandler(object sender);
+
         private CheckedChangedEventHandler CheckedChangedEvent;
 
         public event CheckedChangedEventHandler CheckedChanged {
@@ -1251,12 +1321,12 @@ namespace MonoFlat {
             }
         }
 
-
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) {
             base.OnMouseMove(e);
             X = e.Location.X;
             Invalidate();
         }
+
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) {
             _Checked = !_Checked;
             Focus();
@@ -1279,7 +1349,7 @@ namespace MonoFlat {
             Invalidate();
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_CheckBox() {
             Width = 148;
@@ -1314,19 +1384,22 @@ namespace MonoFlat {
             G.DrawString(Text, Font, new SolidBrush(Color.FromArgb(116, 125, 132)), new Point(20, 0));
         }
     }
-    #endregion
-    #region  Radio Button
+
+    #endregion CheckBox
+
+    #region Radio Button
 
     [DefaultEvent("CheckedChanged")]
     public class MonoFlat_RadioButton : Control {
 
-        #region  Variables
+        #region Variables
 
         private int X;
         private bool _Checked;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public bool Checked {
             get {
@@ -1341,10 +1414,12 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         public delegate void CheckedChangedEventHandler(object sender);
+
         private CheckedChangedEventHandler CheckedChangedEvent;
 
         public event CheckedChangedEventHandler CheckedChanged {
@@ -1356,7 +1431,6 @@ namespace MonoFlat {
             }
         }
 
-
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) {
             if (!_Checked) {
                 @Checked = true;
@@ -1364,11 +1438,13 @@ namespace MonoFlat {
             Focus();
             base.OnMouseDown(e);
         }
+
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) {
             base.OnMouseMove(e);
             X = e.X;
             Invalidate();
         }
+
         protected override void OnTextChanged(System.EventArgs e) {
             base.OnTextChanged(e);
             int textSize = 0;
@@ -1381,7 +1457,7 @@ namespace MonoFlat {
             this.Height = 17;
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_RadioButton() {
             Width = 159;
@@ -1417,13 +1493,14 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  TextBox
+    #endregion Radio Button
+
+    #region TextBox
 
     [DefaultEvent("TextChanged")]
     public class MonoFlat_TextBox : Control {
 
-        #region  Variables
+        #region Variables
 
         public TextBox MonoFlatTB = new TextBox();
         private int _maxchars = 32767;
@@ -1437,8 +1514,9 @@ namespace MonoFlat {
         private SolidBrush B1;
         private GraphicsPath Shape;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public HorizontalAlignment TextAlignment {
             get {
@@ -1449,6 +1527,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         public int MaxLength {
             get {
                 return _maxchars;
@@ -1470,6 +1549,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         public bool ReadOnly {
             get {
                 return _ReadOnly;
@@ -1481,6 +1561,7 @@ namespace MonoFlat {
                 }
             }
         }
+
         public bool Multiline {
             get {
                 return _Multiline;
@@ -1527,8 +1608,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         private void _Enter(object Obj, EventArgs e) {
             P1 = new Pen(Color.FromArgb(37, 113, 186));
@@ -1605,7 +1687,7 @@ namespace MonoFlat {
             MonoFlatTB.Text = Text;
         }
 
-        #endregion
+        #endregion EventArgs
 
         public void AddTextBox() {
             MonoFlatTB.Location = new Point(8, 10);
@@ -1648,7 +1730,6 @@ namespace MonoFlat {
 
             G.SmoothingMode = SmoothingMode.AntiAlias;
 
-
             if (Image == null) {
                 MonoFlatTB.Width = Width - 18;
             } else {
@@ -1674,11 +1755,11 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Panel
+    #endregion TextBox
+
+    #region Panel
 
     public class MonoFlat_Panel : ContainerControl {
-
         private GraphicsPath Shape;
 
         public MonoFlat_Panel() {
@@ -1719,8 +1800,9 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  Separator
+    #endregion Panel
+
+    #region Separator
 
     public class MonoFlat_Separator : Control {
 
@@ -1735,13 +1817,14 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  TrackBar
+    #endregion Separator
+
+    #region TrackBar
 
     [DefaultEvent("ValueChanged")]
     public class MonoFlat_TrackBar : Control {
 
-        #region  Enums
+        #region Enums
 
         public enum ValueDivisor {
             By1 = 1,
@@ -1750,8 +1833,9 @@ namespace MonoFlat {
             By1000 = 1000
         }
 
-        #endregion
-        #region  Variables
+        #endregion Enums
+
+        #region Variables
 
         private Rectangle FillValue;
         private Rectangle PipeBorder;
@@ -1769,15 +1853,15 @@ namespace MonoFlat {
         private bool _JumpToMouse = false;
         private ValueDivisor DividedValue = ValueDivisor.By1;
 
-        #endregion
-        #region  Properties
+        #endregion Variables
+
+        #region Properties
 
         public int Minimum {
             get {
                 return _Minimum;
             }
             set {
-
                 if (value >= _Maximum) {
                     value = _Maximum - 10;
                 }
@@ -1795,7 +1879,6 @@ namespace MonoFlat {
                 return _Maximum;
             }
             set {
-
                 if (value <= _Minimum) {
                     value = _Minimum + 10;
                 }
@@ -1809,6 +1892,7 @@ namespace MonoFlat {
         }
 
         public delegate void ValueChangedEventHandler();
+
         private ValueChangedEventHandler ValueChangedEvent;
 
         public event ValueChangedEventHandler ValueChanged {
@@ -1872,8 +1956,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Properties
+
+        #region EventArgs
 
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
@@ -1903,7 +1988,7 @@ namespace MonoFlat {
             Cap = false;
         }
 
-        #endregion
+        #endregion EventArgs
 
         public MonoFlat_TrackBar() {
             SetStyle((System.Windows.Forms.ControlStyles)(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.DoubleBuffer), true);
@@ -1951,12 +2036,13 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-    #region  NotificationBox
+    #endregion TrackBar
+
+    #region NotificationBox
 
     public class MonoFlat_NotificationBox : Control {
 
-        #region  Variables
+        #region Variables
 
         private Point CloseCoordinates;
         private bool IsOverClose;
@@ -1969,8 +2055,9 @@ namespace MonoFlat {
         private Image _Image;
         private Size _ImageSize;
 
-        #endregion
-        #region  Enums
+        #endregion Variables
+
+        #region Enums
 
         // Create a list of Notification Types
         public enum Type {
@@ -1980,8 +2067,9 @@ namespace MonoFlat {
             @Error
         }
 
-        #endregion
-        #region  Custom Properties
+        #endregion Enums
+
+        #region Custom Properties
 
         // Create a NotificationType property and add the Type enum to it
         public Type NotificationType {
@@ -1993,6 +2081,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         // Boolean value to determine whether the control should use border radius
         public bool RoundCorners {
             get {
@@ -2003,6 +2092,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         // Boolean value to determine whether the control should draw the close button
         public bool ShowCloseButton {
             get {
@@ -2013,6 +2103,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         // Integer value to determine the curve level of the borders
         public int BorderCurve {
             get {
@@ -2023,6 +2114,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         // Image value to determine whether the control should draw an image before the header
         public Image Image {
             get {
@@ -2039,6 +2131,7 @@ namespace MonoFlat {
                 Invalidate();
             }
         }
+
         // Size value - returns the image size
         protected Size ImageSize {
             get {
@@ -2046,8 +2139,9 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
-        #region  EventArgs
+        #endregion Custom Properties
+
+        #region EventArgs
 
         protected override void OnMouseMove(System.Windows.Forms.MouseEventArgs e) {
             base.OnMouseMove(e);
@@ -2061,6 +2155,7 @@ namespace MonoFlat {
             // Updates the control
             Invalidate();
         }
+
         protected override void OnMouseDown(System.Windows.Forms.MouseEventArgs e) {
             base.OnMouseDown(e);
 
@@ -2072,7 +2167,7 @@ namespace MonoFlat {
             }
         }
 
-        #endregion
+        #endregion EventArgs
 
         internal GraphicsPath CreateRoundRect(Rectangle r, int curve) {
             // Draw a border radius
@@ -2127,16 +2222,19 @@ namespace MonoFlat {
                     BorderColor = Color.FromArgb(111, 177, 199);
                     ForeColor = Color.White;
                     break;
+
                 case Type.Success:
                     BackgroundColor = Color.FromArgb(91, 195, 162);
                     BorderColor = Color.FromArgb(91, 195, 162);
                     ForeColor = Color.White;
                     break;
+
                 case Type.Warning:
                     BackgroundColor = Color.FromArgb(254, 209, 108);
                     BorderColor = Color.FromArgb(254, 209, 108);
                     ForeColor = Color.DimGray;
                     break;
+
                 case Type.Error:
                     BackgroundColor = Color.FromArgb(217, 103, 93);
                     BorderColor = Color.FromArgb(217, 103, 93);
@@ -2156,12 +2254,15 @@ namespace MonoFlat {
                 case Type.Notice:
                     NotificationText = "NOTICE";
                     break;
+
                 case Type.Success:
                     NotificationText = "SUCCESS";
                     break;
+
                 case Type.Warning:
                     NotificationText = "WARNING";
                     break;
+
                 case Type.Error:
                     NotificationText = "ERROR";
                     break;
@@ -2187,6 +2288,5 @@ namespace MonoFlat {
         }
     }
 
-    #endregion
-
+    #endregion NotificationBox
 }

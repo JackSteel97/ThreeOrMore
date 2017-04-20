@@ -4,11 +4,12 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace ThreeOrMore {
-    public partial class GameSetup : Form {
 
+    public partial class GameSetup : Form {
         private List<Player> players = new List<Player>();
         private int dieFaces = 6;
         private int scoreToWin = 50;
+
         public GameSetup() {
             InitializeComponent();
         }
@@ -23,22 +24,19 @@ namespace ThreeOrMore {
                 playerLbl.Name = string.Format("player{0}", players.Count);
                 playersContainer.Controls.Add(playerLbl);
                 playerLbl.Show();
-                
-                players.Add(new Player(newPlayerNameTxt.Text.Trim(),aiCheck.Checked));
+
+                players.Add(new Player(newPlayerNameTxt.Text.Trim(), aiCheck.Checked));
                 newPlayerNameTxt.Text = "";
                 aiCheck.Checked = false;
-            }        
-
+            }
         }
 
         private void dieFacesSlider_ValueChanged() {
-
             if (dieFacesSlider.Value < 2) {
                 dieFacesSlider.Value = 2;
             }
             dieFaces = dieFacesSlider.Value;
             dieFacesLbl.Text = string.Format("Each die has {0} faces", dieFaces);
-
         }
 
         private void scoreSlider_ValueChanged() {

@@ -4,9 +4,11 @@ using System.Windows.Forms;
 using ThreeOrMore.Properties;
 
 namespace ThreeOrMore {
-   class UIDie : Die {
+
+    internal class UIDie : Die {
         private Action dieFinishedCallback;
         private PictureBox dieImage;
+
         public PictureBox DieImage {
             get {
                 return this.dieImage;
@@ -15,6 +17,7 @@ namespace ThreeOrMore {
                 this.dieImage = value;
             }
         }
+
         private int countFrom;
         private System.Timers.Timer dieTimer;
         private int intermediateValue;
@@ -39,50 +42,55 @@ namespace ThreeOrMore {
                 dieTimer.Start();
                 rolling = true;
                 return -1;
-            }     
+            }
             throw new InvalidOperationException("Die has been rolled.");
         }
-        
+
         private void TimerTick(object source, ElapsedEventArgs e) {
             countFrom -= 1;
             dieTimer.Interval += 1;
 
-            if (countFrom > 0){
+            if (countFrom > 0) {
                 Random rnd = new Random();
-                intermediateValue = rnd.Next(1, NumberOfFaces+1);
+                intermediateValue = rnd.Next(1, NumberOfFaces + 1);
                 switch (intermediateValue) {
                     case 1:
                         dieImage.Image = Resources.Die1;
                         break;
+
                     case 2:
                         dieImage.Image = Resources.Die2;
                         break;
+
                     case 3:
                         dieImage.Image = Resources.Die3;
                         break;
+
                     case 4:
                         dieImage.Image = Resources.Die4;
                         break;
+
                     case 5:
                         dieImage.Image = Resources.Die5;
                         break;
+
                     case 6:
                         dieImage.Image = Resources.Die6;
                         break;
+
                     default:
                         dieImage.Image = Resources.Die6;
                         break;
                 }
-            }else {
+            } else {
                 dieTimer.Enabled = false;
                 dieTimer.Stop();
                 Value = intermediateValue;
                 this.dieImage.BackColor = System.Drawing.Color.DimGray;
-                rolling = false;    
+                rolling = false;
                 Rolled = true;
                 dieFinishedCallback();
             }
-
         }
     }
 }

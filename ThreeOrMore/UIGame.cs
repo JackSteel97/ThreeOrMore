@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ThreeOrMore {
-    class UIGame {
+
+    internal class UIGame {
         private UIDie[] dice;
         private Queue<Player> players = new Queue<Player>();
         private bool gameOver;
@@ -28,7 +26,7 @@ namespace ThreeOrMore {
             }
         }
 
-        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater, Action<List<HistoryEntry>> historyAdder) {
+        public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater, Action<string> turnUpdater, Action<List<HistoryEntry>> historyAdder) {
             if (scoreToWin <= 0) {
                 throw new Exception("Score needed to win must be a positive integer greater than zero.");
             }
@@ -39,15 +37,13 @@ namespace ThreeOrMore {
             this.updateTurn = turnUpdater;
             this.addToHistory = historyAdder;
 
-            
-
             foreach (Player player in players) {
                 this.players.Enqueue(player);
             }
 
             this.dice = dice;
 
-            foreach(UIDie die in dice) {
+            foreach (UIDie die in dice) {
                 die.DieImage.MouseUp += new MouseEventHandler(die_MouseUp);
             }
         }
@@ -56,7 +52,7 @@ namespace ThreeOrMore {
             HistoryEntry h = new HistoryEntry("Game Started");
             history.Add(h);
             addToHistory(history);
-            nextTurn();           
+            nextTurn();
         }
 
         private void nextTurn() {
@@ -68,7 +64,6 @@ namespace ThreeOrMore {
             if (activePlayer.AIPlayer) {
                 takeAITurn();
             }
-           
         }
 
         public void rollAllDice() {
@@ -80,7 +75,6 @@ namespace ThreeOrMore {
                     Thread.Sleep(50);
                 }
             }
-            
         }
 
         private void updateTurnLbl() {
@@ -114,10 +108,10 @@ namespace ThreeOrMore {
                 Dictionary<int, int> numberOccurrences = countDiceValues();
                 if (!doublePoints) {
                     activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll);
-                }else {
+                } else {
                     activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll) * 2;
                 }
-               
+
                 if (reroll && !rerollUsed && !doublePoints) {
                     rerollUsed = true;
                     alertToTwoMatches();
@@ -137,7 +131,7 @@ namespace ThreeOrMore {
                         }
                     }
                     if (aiTurn) {
-                        foreach(UIDie die in dice) {
+                        foreach (UIDie die in dice) {
                             if (!die.Rolled) {
                                 die.roll(aDieFinished);
                                 Thread.Sleep(50);
@@ -156,12 +150,10 @@ namespace ThreeOrMore {
                             clone.Add((UIDie)die.Clone());
                         }
                         if (rerollUsed) {
-                            
-
                             h = new HistoryEntry(turnNumber, activePlayer, clone.ToArray(), "after re-rolling");
                         } else {
                             h = new HistoryEntry(turnNumber, activePlayer, clone.ToArray());
-                        }                    
+                        }
                         history.Add(h);
                         addToHistory(history);
                         players.Enqueue(activePlayer);
@@ -169,8 +161,6 @@ namespace ThreeOrMore {
                         nextTurn();
                     }
                 }
-
-               
             }
         }
 
@@ -179,11 +169,11 @@ namespace ThreeOrMore {
         }
 
         private void outputNextTurn() {
-            if(activePlayer.Name[activePlayer.Name.Length-1].ToString().ToLower() == "s") {
+            if (activePlayer.Name[activePlayer.Name.Length - 1].ToString().ToLower() == "s") {
                 updateHint(string.Format("{0}' turn over, their current score is: {1}", activePlayer.Name, activePlayer.Points));
-            }else {
+            } else {
                 updateHint(string.Format("{0}'s turn over, their current score is: {1}", activePlayer.Name, activePlayer.Points));
-            }         
+            }
         }
 
         private void endGame() {
@@ -216,7 +206,7 @@ namespace ThreeOrMore {
                 //3 of a kind
                 return 3;
             } else if (numberOccurrences.ContainsValue(2)) {
-                //2 of a kind        
+                //2 of a kind
                 reroll = true;
             }
             return 0;
@@ -230,27 +220,23 @@ namespace ThreeOrMore {
                 if (!dice[dieNum].Rolled && !gameOver) {
                     dice[dieNum].roll(aDieFinished);
                 }
-            }         
+            }
         }
 
         private void takeAITurn() {
             aiTurn = true;
             Random rnd = new Random();
             int selector = rnd.Next(2);
-            if(selector == 0) {
+            if (selector == 0) {
                 //roll all once
                 rollAllDice();
                 aiTurn = false;
-            }else {
-                foreach(UIDie die in dice) {
+            } else {
+                foreach (UIDie die in dice) {
                     die.roll(aDieFinished);
                     Thread.Sleep(50);
                 }
             }
-
         }
-       
-
-   
     }
 }

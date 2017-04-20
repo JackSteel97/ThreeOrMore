@@ -1,11 +1,12 @@
 ﻿using System;
 
+namespace ThreeOrMore {
 
-namespace ThreeOrMore{
-   public class Player {
+    public class Player {
         private string name;
         private int points;
         private bool aiPlayer;
+
         public string Name {
             get {
                 return this.name;
@@ -13,8 +14,8 @@ namespace ThreeOrMore{
             set {
                 this.name = value;
             }
-            
         }
+
         public int Points {
             get {
                 return this.points;
@@ -23,6 +24,7 @@ namespace ThreeOrMore{
                 this.points = value;
             }
         }
+
         public bool AIPlayer {
             get {
                 return this.aiPlayer;
@@ -31,8 +33,6 @@ namespace ThreeOrMore{
                 this.aiPlayer = value;
             }
         }
-
-        
 
         public Player(string name, bool playerIsAI = false) {
             if (name.Length == 0 || name == null) {
