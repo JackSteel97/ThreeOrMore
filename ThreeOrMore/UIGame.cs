@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -18,6 +19,8 @@ namespace ThreeOrMore {
         private Action<string> updateTurn;
         private Action<List<HistoryEntry>> addToHistory;
         private List<HistoryEntry> history = new List<HistoryEntry>();
+        private bool doublePoints = false;
+
         public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater, Action<List<HistoryEntry>> historyAdder) {
             if (scoreToWin <= 0) {
                 throw new Exception("Score needed to win must be a positive integer greater than zero.");
@@ -55,7 +58,17 @@ namespace ThreeOrMore {
             updateTurnLbl();
             rerollUsed = false;
             resetDice();
+            doublePoints = false;
            
+        }
+
+        public void rollAllDice() {
+            doublePoints = true;
+            foreach(UIDie die in dice) {
+                die.roll(aDieFinished);
+                //make the random generator different for each die by waiting
+                Thread.Sleep(50);
+            }
         }
 
         private void updateTurnLbl() {
@@ -87,8 +100,13 @@ namespace ThreeOrMore {
             if (allDiceRolled()) {
                 bool reroll;
                 Dictionary<int, int> numberOccurrences = countDiceValues();
-                activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll);
-                if (reroll && !rerollUsed) {
+                if (!doublePoints) {
+                    activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll);
+                }else {
+                    activePlayer.Points += analyseDiceForScore(numberOccurrences, out reroll) * 2;
+                }
+               
+                if (reroll && !rerollUsed && !doublePoints) {
                     rerollUsed = true;
                     alertToTwoMatches();
                     //find numbers that match
@@ -193,5 +211,7 @@ namespace ThreeOrMore {
             
 
         }
+
+   
     }
 }

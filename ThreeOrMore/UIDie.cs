@@ -18,13 +18,14 @@ namespace ThreeOrMore {
         private int countFrom;
         private System.Timers.Timer dieTimer;
         private int intermediateValue;
+        private bool rolling = false;
 
         public UIDie(int numberOfFaces, PictureBox dieImage) : base(numberOfFaces) {
             this.dieImage = dieImage;
         }
 
         public int roll(Action callback) {
-            if (!this.Rolled) {
+            if (!Rolled && !rolling) {
                 Random rnd = new Random();
                 this.countFrom = rnd.Next(20, 80);
                 this.dieFinishedCallback = callback;
@@ -33,6 +34,7 @@ namespace ThreeOrMore {
                 dieTimer.Interval = 25;
                 dieTimer.Elapsed += new ElapsedEventHandler(TimerTick);
                 dieTimer.Start();
+                rolling = true;
                 return -1;
             }
             throw new InvalidOperationException("Die must be rolled first");
@@ -72,7 +74,8 @@ namespace ThreeOrMore {
                 dieTimer.Enabled = false;
                 dieTimer.Stop();
                 Value = intermediateValue;
-                this.dieImage.BackColor = System.Drawing.Color.DimGray;      
+                this.dieImage.BackColor = System.Drawing.Color.DimGray;
+                rolling = false;    
                 Rolled = true;
                 dieFinishedCallback();
             }

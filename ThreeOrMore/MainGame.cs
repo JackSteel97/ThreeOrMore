@@ -16,6 +16,8 @@ namespace ThreeOrMore {
         public int scoreToWin;
         delegate void SetTextCallback(string text);
         delegate void SetHistoryCallback(List<HistoryEntry> history);
+        private UIGame game;
+
         public MainGame() {
             InitializeComponent();
         }
@@ -29,7 +31,7 @@ namespace ThreeOrMore {
             dice[4] = new UIDie(dieFaces, die5);
 
 
-            UIGame game = new UIGame(scoreToWin, players.ToArray(), dice,updateHintLbl, updateTurnLbl, addToHistory);
+            game = new UIGame(scoreToWin, players.ToArray(), dice,updateHintLbl, updateTurnLbl, addToHistory);
             game.startGame();
 
         }
@@ -50,6 +52,7 @@ namespace ThreeOrMore {
             } else {
                 this.turnLbl.Text = text;
             }
+            rollAllBtn.Enabled = true;
         }
         private void updateStats(List<HistoryEntry> history) {
 
@@ -104,6 +107,11 @@ namespace ThreeOrMore {
             }
 
         
+        }
+
+        private void rollAllBtn_Click(object sender, EventArgs e) {
+            game.rollAllDice();
+            rollAllBtn.Enabled = false;
         }
     }
 }
