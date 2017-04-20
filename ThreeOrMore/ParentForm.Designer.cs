@@ -78,7 +78,7 @@
             // controlBox
             // 
             this.controlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.controlBox.EnableHoverHighlight = false;
+            this.controlBox.EnableHoverHighlight = true;
             this.controlBox.EnableMaximizeButton = false;
             this.controlBox.EnableMinimizeButton = true;
             this.controlBox.Location = new System.Drawing.Point(1808, 15);

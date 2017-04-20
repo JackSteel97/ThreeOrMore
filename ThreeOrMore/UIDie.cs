@@ -22,6 +22,11 @@ namespace ThreeOrMore {
         private System.Timers.Timer dieTimer;
         private int intermediateValue;
         private bool rolling = false;
+        public bool Rolling {
+            get {
+                return this.rolling;
+            }
+        }
 
         public UIDie(int numberOfFaces, PictureBox dieImage) : base(numberOfFaces) {
             this.dieImage = dieImage;

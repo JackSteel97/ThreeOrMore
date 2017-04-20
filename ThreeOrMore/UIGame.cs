@@ -61,13 +61,23 @@ namespace ThreeOrMore {
             rerollUsed = false;
             resetDice();
             doublePoints = false;
+            aiTurn = false;
             if (activePlayer.AIPlayer) {
                 takeAITurn();
             }
         }
 
+        private bool anyDiceHaveBeenRolled() {
+            foreach(UIDie die in dice) {
+                if (die.Rolled || die.Rolling) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public void rollAllDice() {
-            if (!rerollUsed) {
+            if (!rerollUsed && !anyDiceHaveBeenRolled()) {
                 doublePoints = true;
                 foreach (UIDie die in dice) {
                     die.roll(aDieFinished);
@@ -137,7 +147,6 @@ namespace ThreeOrMore {
                                 Thread.Sleep(50);
                             }
                         }
-                        aiTurn = false;
                     }
                 } else {
                     outputNextTurn();
@@ -230,7 +239,6 @@ namespace ThreeOrMore {
             if (selector == 0) {
                 //roll all once
                 rollAllDice();
-                aiTurn = false;
             } else {
                 foreach (UIDie die in dice) {
                     die.roll(aDieFinished);

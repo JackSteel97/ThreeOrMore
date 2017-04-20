@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGame));
             this.statsContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.rollAllBtn = new MonoFlat.MonoFlat_Button();
             this.statsLbl = new MonoFlat.MonoFlat_Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.avgLastTurnLbl = new MonoFlat.MonoFlat_Label();
@@ -41,7 +42,6 @@
             this.die3 = new System.Windows.Forms.PictureBox();
             this.turnLbl = new MonoFlat.MonoFlat_HeaderLabel();
             this.monoFlat_ControlBox1 = new MonoFlat.MonoFlat_ControlBox();
-            this.rollAllBtn = new MonoFlat.MonoFlat_Button();
             this.statsContainer.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.die1)).BeginInit();
@@ -80,6 +80,20 @@
             this.statsContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.statsContainer.TabIndex = 0;
             this.statsContainer.Text = "Three or More";
+            // 
+            // rollAllBtn
+            // 
+            this.rollAllBtn.BackColor = System.Drawing.Color.Transparent;
+            this.rollAllBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.rollAllBtn.Image = null;
+            this.rollAllBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rollAllBtn.Location = new System.Drawing.Point(871, 445);
+            this.rollAllBtn.Name = "rollAllBtn";
+            this.rollAllBtn.Size = new System.Drawing.Size(179, 63);
+            this.rollAllBtn.TabIndex = 13;
+            this.rollAllBtn.Text = "Roll All Dice Once (Double Points)";
+            this.rollAllBtn.TextAlignment = System.Drawing.StringAlignment.Center;
+            this.rollAllBtn.Click += new System.EventHandler(this.rollAllBtn_Click);
             // 
             // statsLbl
             // 
@@ -179,8 +193,8 @@
             // monoFlat_ControlBox2
             // 
             this.monoFlat_ControlBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_ControlBox2.EnableHoverHighlight = false;
-            this.monoFlat_ControlBox2.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox2.EnableHoverHighlight = true;
+            this.monoFlat_ControlBox2.EnableMaximizeButton = false;
             this.monoFlat_ControlBox2.EnableMinimizeButton = true;
             this.monoFlat_ControlBox2.Location = new System.Drawing.Point(1792, 15);
             this.monoFlat_ControlBox2.Name = "monoFlat_ControlBox2";
@@ -265,20 +279,6 @@
             this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";
             this.monoFlat_ControlBox1.Size = new System.Drawing.Size(0, 0);
             this.monoFlat_ControlBox1.TabIndex = 0;
-            // 
-            // rollAllBtn
-            // 
-            this.rollAllBtn.BackColor = System.Drawing.Color.Transparent;
-            this.rollAllBtn.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.rollAllBtn.Image = null;
-            this.rollAllBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rollAllBtn.Location = new System.Drawing.Point(871, 445);
-            this.rollAllBtn.Name = "rollAllBtn";
-            this.rollAllBtn.Size = new System.Drawing.Size(179, 63);
-            this.rollAllBtn.TabIndex = 13;
-            this.rollAllBtn.Text = "Roll All Dice Once (Double Points)";
-            this.rollAllBtn.TextAlignment = System.Drawing.StringAlignment.Center;
-            this.rollAllBtn.Click += new System.EventHandler(this.rollAllBtn_Click);
             // 
             // MainGame
             // 

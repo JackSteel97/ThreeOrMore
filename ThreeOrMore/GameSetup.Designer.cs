@@ -196,8 +196,8 @@
             // monoFlat_ControlBox1
             // 
             this.monoFlat_ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.monoFlat_ControlBox1.EnableHoverHighlight = false;
-            this.monoFlat_ControlBox1.EnableMaximizeButton = true;
+            this.monoFlat_ControlBox1.EnableHoverHighlight = true;
+            this.monoFlat_ControlBox1.EnableMaximizeButton = false;
             this.monoFlat_ControlBox1.EnableMinimizeButton = true;
             this.monoFlat_ControlBox1.Location = new System.Drawing.Point(1808, 15);
             this.monoFlat_ControlBox1.Name = "monoFlat_ControlBox1";

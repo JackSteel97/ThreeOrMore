@@ -48,12 +48,15 @@ namespace ThreeOrMore {
         }
 
         private void startGameBtn_Click(object sender, EventArgs e) {
-            MainGame game = new MainGame();
-            game.players = players;
-            game.scoreToWin = scoreToWin;
-            game.dieFaces = dieFaces;
-            game.Show();
-            this.Close();
+            if(players.Count > 0) {
+                MainGame game = new MainGame();
+                game.players = players;
+                game.scoreToWin = scoreToWin;
+                game.dieFaces = dieFaces;
+                game.Show();
+                this.Close();
+            }
+            
         }
     }
 }
