@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.gameSetupContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.aiCheck = new MonoFlat.MonoFlat_CheckBox();
             this.startGameBtn = new MonoFlat.MonoFlat_Button();
             this.scoreToWinLbl = new MonoFlat.MonoFlat_Label();
             this.scoreSlider = new MonoFlat.MonoFlat_TrackBar();
@@ -40,6 +41,7 @@
             // gameSetupContainer
             // 
             this.gameSetupContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.gameSetupContainer.Controls.Add(this.aiCheck);
             this.gameSetupContainer.Controls.Add(this.startGameBtn);
             this.gameSetupContainer.Controls.Add(this.scoreToWinLbl);
             this.gameSetupContainer.Controls.Add(this.scoreSlider);
@@ -62,6 +64,16 @@
             this.gameSetupContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.gameSetupContainer.TabIndex = 0;
             this.gameSetupContainer.Text = "Game Setup";
+            // 
+            // aiCheck
+            // 
+            this.aiCheck.Checked = false;
+            this.aiCheck.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.aiCheck.Location = new System.Drawing.Point(1035, 184);
+            this.aiCheck.Name = "aiCheck";
+            this.aiCheck.Size = new System.Drawing.Size(148, 16);
+            this.aiCheck.TabIndex = 10;
+            this.aiCheck.Text = "AI";
             // 
             // startGameBtn
             // 
@@ -223,5 +235,6 @@
         private MonoFlat.MonoFlat_Label scoreToWinLbl;
         private MonoFlat.MonoFlat_TrackBar scoreSlider;
         private MonoFlat.MonoFlat_Button startGameBtn;
+        private MonoFlat.MonoFlat_CheckBox aiCheck;
     }
 }

@@ -23,9 +23,10 @@ namespace ThreeOrMore {
                 playerLbl.Name = string.Format("player{0}", players.Count);
                 playersContainer.Controls.Add(playerLbl);
                 playerLbl.Show();
-
-                players.Add(new Player(newPlayerNameTxt.Text.Trim()));
+                
+                players.Add(new Player(newPlayerNameTxt.Text.Trim(),aiCheck.Checked));
                 newPlayerNameTxt.Text = "";
+                aiCheck.Checked = false;
             }        
 
         }

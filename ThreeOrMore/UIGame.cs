@@ -20,6 +20,13 @@ namespace ThreeOrMore {
         private Action<List<HistoryEntry>> addToHistory;
         private List<HistoryEntry> history = new List<HistoryEntry>();
         private bool doublePoints = false;
+        private bool aiTurn = false;
+
+        public bool AITurn {
+            get {
+                return this.aiTurn;
+            }
+        }
 
         public UIGame(int scoreToWin, Player[] players, UIDie[] dice, Action<string> hintUpdater,Action<string> turnUpdater, Action<List<HistoryEntry>> historyAdder) {
             if (scoreToWin <= 0) {
@@ -49,7 +56,6 @@ namespace ThreeOrMore {
             HistoryEntry h = new HistoryEntry("Game Started");
             history.Add(h);
             addToHistory(history);
-
             nextTurn();           
         }
 
@@ -59,16 +65,22 @@ namespace ThreeOrMore {
             rerollUsed = false;
             resetDice();
             doublePoints = false;
+            if (activePlayer.AIPlayer) {
+                takeAITurn();
+            }
            
         }
 
         public void rollAllDice() {
-            doublePoints = true;
-            foreach(UIDie die in dice) {
-                die.roll(aDieFinished);
-                //make the random generator different for each die by waiting
-                Thread.Sleep(50);
+            if (!rerollUsed) {
+                doublePoints = true;
+                foreach (UIDie die in dice) {
+                    die.roll(aDieFinished);
+                    //make the random generator different for each die by waiting
+                    Thread.Sleep(50);
+                }
             }
+            
         }
 
         private void updateTurnLbl() {
@@ -123,6 +135,15 @@ namespace ThreeOrMore {
                             die.Rolled = false;
                             die.DieImage.BackColor = System.Drawing.Color.White;
                         }
+                    }
+                    if (aiTurn) {
+                        foreach(UIDie die in dice) {
+                            if (!die.Rolled) {
+                                die.roll(aDieFinished);
+                                Thread.Sleep(50);
+                            }
+                        }
+                        aiTurn = false;
                     }
                 } else {
                     outputNextTurn();
@@ -202,15 +223,33 @@ namespace ThreeOrMore {
         }
 
         private void die_MouseUp(object sender, MouseEventArgs e) {
-            PictureBox img = (PictureBox)sender;
-            
-            int dieNum = Convert.ToInt32(img.Name[img.Name.Length - 1].ToString()) - 1;
-            if (!dice[dieNum].Rolled && !gameOver) {
-                dice[dieNum].roll(aDieFinished);
+            if (!aiTurn) {
+                PictureBox img = (PictureBox)sender;
+
+                int dieNum = Convert.ToInt32(img.Name[img.Name.Length - 1].ToString()) - 1;
+                if (!dice[dieNum].Rolled && !gameOver) {
+                    dice[dieNum].roll(aDieFinished);
+                }
+            }         
+        }
+
+        private void takeAITurn() {
+            aiTurn = true;
+            Random rnd = new Random();
+            int selector = rnd.Next(2);
+            if(selector == 0) {
+                //roll all once
+                rollAllDice();
+                aiTurn = false;
+            }else {
+                foreach(UIDie die in dice) {
+                    die.roll(aDieFinished);
+                    Thread.Sleep(50);
+                }
             }
-            
 
         }
+       
 
    
     }

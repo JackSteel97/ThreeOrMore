@@ -11,7 +11,7 @@ namespace ThreeOrMore {
                 if (this.rolled) {
                     return this.value;
                 }else {
-                    throw new InvalidOperationException("Die must be rolled first");
+                    throw new InvalidOperationException("Die must be rolled first.");
                 }
                 
             }
@@ -45,12 +45,12 @@ namespace ThreeOrMore {
         public virtual int roll() {
             if (!this.rolled) {
                 Random rnd = new Random();
-                int rolledNum = rnd.Next(1, this.numberOfFaces);
+                int rolledNum = rnd.Next(1, this.numberOfFaces+1);
                 this.value = rolledNum;
                 this.rolled = true;
                 return rolledNum;
             }
-            throw new InvalidOperationException("Die must be rolled first");
+            throw new InvalidOperationException("Die has been rolled.");
         }
 
         public object Clone() {

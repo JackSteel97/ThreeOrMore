@@ -110,8 +110,11 @@ namespace ThreeOrMore {
         }
 
         private void rollAllBtn_Click(object sender, EventArgs e) {
-            game.rollAllDice();
-            rollAllBtn.Enabled = false;
+            if (!game.AITurn) {
+                game.rollAllDice();
+                rollAllBtn.Enabled = false;
+            }
+            
         }
     }
 }

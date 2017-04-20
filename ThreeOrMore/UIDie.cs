@@ -25,9 +25,12 @@ namespace ThreeOrMore {
         }
 
         public int roll(Action callback) {
-            if (!Rolled && !rolling) {
+            if (rolling) {
+                return -2;
+            }
+            if (!Rolled) {
                 Random rnd = new Random();
-                this.countFrom = rnd.Next(20, 80);
+                this.countFrom = rnd.Next(20, 81);
                 this.dieFinishedCallback = callback;
                 dieTimer = new System.Timers.Timer();
                 dieTimer.Enabled = true;
@@ -36,8 +39,8 @@ namespace ThreeOrMore {
                 dieTimer.Start();
                 rolling = true;
                 return -1;
-            }
-            throw new InvalidOperationException("Die must be rolled first");
+            }     
+            throw new InvalidOperationException("Die has been rolled.");
         }
         
         private void TimerTick(object source, ElapsedEventArgs e) {
@@ -46,7 +49,7 @@ namespace ThreeOrMore {
 
             if (countFrom > 0){
                 Random rnd = new Random();
-                intermediateValue = rnd.Next(1, NumberOfFaces);
+                intermediateValue = rnd.Next(1, NumberOfFaces+1);
                 switch (intermediateValue) {
                     case 1:
                         dieImage.Image = Resources.Die1;
