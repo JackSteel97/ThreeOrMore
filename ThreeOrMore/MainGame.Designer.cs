@@ -126,9 +126,9 @@
             this.avgLastTurnLbl.Location = new System.Drawing.Point(30, 30);
             this.avgLastTurnLbl.Margin = new System.Windows.Forms.Padding(30);
             this.avgLastTurnLbl.Name = "avgLastTurnLbl";
-            this.avgLastTurnLbl.Size = new System.Drawing.Size(288, 32);
+            this.avgLastTurnLbl.Size = new System.Drawing.Size(301, 32);
             this.avgLastTurnLbl.TabIndex = 0;
-            this.avgLastTurnLbl.Text = "Average of dice last turn: ";
+            this.avgLastTurnLbl.Text = "Average of dice last turn: 0";
             // 
             // totalLastTurnLbl
             // 
@@ -139,9 +139,9 @@
             this.totalLastTurnLbl.Location = new System.Drawing.Point(30, 122);
             this.totalLastTurnLbl.Margin = new System.Windows.Forms.Padding(30);
             this.totalLastTurnLbl.Name = "totalLastTurnLbl";
-            this.totalLastTurnLbl.Size = new System.Drawing.Size(252, 32);
+            this.totalLastTurnLbl.Size = new System.Drawing.Size(265, 32);
             this.totalLastTurnLbl.TabIndex = 1;
-            this.totalLastTurnLbl.Text = "Total of dice last turn: ";
+            this.totalLastTurnLbl.Text = "Total of dice last turn: 0";
             // 
             // avgTotalLbl
             // 
@@ -152,9 +152,9 @@
             this.avgTotalLbl.Location = new System.Drawing.Point(30, 214);
             this.avgTotalLbl.Margin = new System.Windows.Forms.Padding(30);
             this.avgTotalLbl.Name = "avgTotalLbl";
-            this.avgTotalLbl.Size = new System.Drawing.Size(172, 32);
+            this.avgTotalLbl.Size = new System.Drawing.Size(185, 32);
             this.avgTotalLbl.TabIndex = 2;
-            this.avgTotalLbl.Text = "Average Total: ";
+            this.avgTotalLbl.Text = "Average Total: 0";
             // 
             // historylbl
             // 
