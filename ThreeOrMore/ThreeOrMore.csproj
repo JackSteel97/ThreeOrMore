@@ -154,6 +154,48 @@
   <ItemGroup>
     <None Include="Resources\Die6.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Die7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Die8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Die9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\die20.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

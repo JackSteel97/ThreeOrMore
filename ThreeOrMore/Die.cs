@@ -2,6 +2,9 @@
 
 namespace ThreeOrMore {
 
+    /// <summary>
+    /// Class modeling a numbered die
+    /// </summary>
     internal class Die : ICloneable {
         private int value;
         private bool rolled;

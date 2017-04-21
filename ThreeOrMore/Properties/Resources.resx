@@ -121,8 +121,41 @@
   <data name="Die1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Die1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="die10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die10.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die11" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die12" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die13" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die13.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die14" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die14.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die15" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die15.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die17" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die17.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die19" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die19.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Die2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Die2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="die20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\die20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Die3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Die3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -135,5 +168,14 @@
   </data>
   <data name="Die6" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Die6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Die7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Die7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Die8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Die8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Die9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Die9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
