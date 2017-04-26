@@ -29,6 +29,8 @@ namespace ThreeOrMore {
         /// Called when the form has finished loading
         /// </summary>
         private void MainGame_Load(object sender, EventArgs e) {
+
+            alignAndSizeControls();
             //create an array of 5 dice
             UIDie[] dice = new UIDie[5];
             //assign UIDie objects with their picture boxes to the array
@@ -160,6 +162,41 @@ namespace ThreeOrMore {
                 //disabled the button
                 rollAllBtn.Enabled = false;
             }
+        }
+
+        private void alignAndSizeControls() {
+            setLocationByPercentage(turnLbl, 9.6, 12);
+
+            setLocationByPercentage(statsContainer, 13.7, 53);
+
+            setSizeByPercentage(hintLbl, 100, 4.63);
+            setLocationByPercentage(hintLbl, 50, 25);
+            
+            setLocationByPercentage(die1, 34.375, 32.407);
+            setLocationByPercentage(die2, 42.1875, 32.407);
+            setLocationByPercentage(die3, 50, 32.407);
+            setLocationByPercentage(die4, 57.8125, 32.407);
+            setLocationByPercentage(die5, 65.625, 32.407);
+
+            setSizeByPercentage(rollAllBtn, 9.375, 5.83);
+            setLocationByPercentage(rollAllBtn, 50, 44);
+
+            setLocationByPercentage(historylbl, 91.1, 26.6);
+
+            setSizeByPercentage(historyContainer, 8.38, 67.5);
+            setLocationByPercentage(historyContainer, 94.2, 61.5);
+
+            setLocationByPercentage(statsLbl, 4.2, 25);
+
+        }
+
+        private void setLocationByPercentage(Control control, double xPercent, double yPercent) {
+            control.Location = new Point((int)Math.Round(this.Width * (xPercent / 100)) - (control.Width / 2), (int)Math.Round(this.Height * (yPercent / 100)) - (control.Height / 2));
+            control.BringToFront();
+        }
+
+        private void setSizeByPercentage(Control control, double widthPercent, double heightPercent) {
+            control.Size = new Size((int)Math.Round(this.Width * (widthPercent / 100)), (int)Math.Round(this.Height * (heightPercent / 100)));
         }
     }
 }
