@@ -97,11 +97,36 @@ namespace ThreeOrMore {
         }
 
         private void alignAndSizeControls() {
-            setLocationByPercentage(scoreToWinLbl, 18.6, 12.9);
+            setLocationByPercentage(scoreToWinLbl, 20, 13);
+
+            setSizeByPercentage(scoreSlider, 18, 1.145);
+            setLocationByPercentage(scoreSlider, 20, 15);
+
+            setSizeByPercentage(newPlayerNameTxt, 10, 5);
+            setLocationByPercentage(newPlayerNameTxt, 50, 13);
+
+            setSizeByPercentage(addNewPlayerBtn, 6.25, 3.7);
+            setLocationByPercentage(addNewPlayerBtn, 50, 18);
+
+            setLocationByPercentage(aiCheck, 58.5, 18);
+
+            setLocationByPercentage(dieFacesLbl, 80, 13);
+
+            setSizeByPercentage(dieFacesSlider, 18, 1.145);
+            setLocationByPercentage(dieFacesSlider, 80, 15);
+
+            setSizeByPercentage(startGameBtn, 7.5, 3.8);
+            setLocationByPercentage(startGameBtn, 95, 23);
+
         }
 
         private void setLocationByPercentage(Control control, double xPercent, double yPercent) {
-            control.Location = new Point((int)Math.Round(this.Width * xPercent), (int)Math.Round(this.Height * yPercent));
+            control.Location = new Point((int)Math.Round(this.Width * (xPercent/100))-(control.Width/2), (int)Math.Round(this.Height * (yPercent/100))-(control.Height/2));
+            control.BringToFront();
+        }
+
+        private void setSizeByPercentage(Control control, double widthPercent, double heightPercent) {
+            control.Size = new Size((int)Math.Round(this.Width * (widthPercent / 100)), (int)Math.Round(this.Height * (heightPercent / 100)));
         }
     }
 }
