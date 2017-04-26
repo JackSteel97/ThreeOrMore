@@ -20,5 +20,14 @@ namespace ThreeOrMore {
             //hide this form
             this.Hide();
         }
+
+        private void ParentForm_Load(object sender, EventArgs e) {
+            alignAndSizeControls();
+        }
+
+        private void alignAndSizeControls() {
+            titleLbl.Location = new System.Drawing.Point((ParentForm.Width / 2) - (titleLbl.Width / 2), titleLbl.Location.Y);
+            newGameBtn.Location = new System.Drawing.Point((ParentForm.Width / 2) - (newGameBtn.Width / 2), newGameBtn.Location.Y);
+        }
     }
 }

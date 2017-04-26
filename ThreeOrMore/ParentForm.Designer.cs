@@ -99,6 +99,7 @@
             this.Text = "Main Menu";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ParentForm_Load);
             this.ParentFormContainer.ResumeLayout(false);
             this.ParentFormContainer.PerformLayout();
             this.ResumeLayout(false);
