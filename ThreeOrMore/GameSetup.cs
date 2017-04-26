@@ -96,6 +96,9 @@ namespace ThreeOrMore {
             alignAndSizeControls();
         }
 
+        /// <summary>
+        /// Align and size controls with respect to the size of the form
+        /// </summary>
         private void alignAndSizeControls() {
             setLocationByPercentage(scoreToWinLbl, 20, 13);
 
@@ -120,11 +123,23 @@ namespace ThreeOrMore {
 
         }
 
+        /// <summary>
+        /// set a controls midpoint location as a percentage of the form size
+        /// </summary>
+        /// <param name="control">Control to change location</param>
+        /// <param name="xPercent">Percentage from left of form to center of control</param>
+        /// <param name="yPercent">Percentage from top of form to center of control</param>
         private void setLocationByPercentage(Control control, double xPercent, double yPercent) {
-            control.Location = new Point((int)Math.Round(this.Width * (xPercent/100))-(control.Width/2), (int)Math.Round(this.Height * (yPercent/100))-(control.Height/2));
+            control.Location = new Point((int)Math.Round(this.Width * (xPercent / 100)) - (control.Width / 2), (int)Math.Round(this.Height * (yPercent / 100)) - (control.Height / 2));
             control.BringToFront();
         }
 
+        /// <summary>
+        /// set a controls size as a percentage of the form size
+        /// </summary>
+        /// <param name="control">Control to change size</param>
+        /// <param name="widthPercent">Percentage of form width control should fill</param>
+        /// <param name="heightPercent">Percentage of form heigh control should fill</param>
         private void setSizeByPercentage(Control control, double widthPercent, double heightPercent) {
             control.Size = new Size((int)Math.Round(this.Width * (widthPercent / 100)), (int)Math.Round(this.Height * (heightPercent / 100)));
         }

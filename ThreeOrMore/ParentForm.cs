@@ -25,6 +25,9 @@ namespace ThreeOrMore {
             alignAndSizeControls();
         }
 
+        /// <summary>
+        /// Align controls with respect to the size of the form
+        /// </summary>
         private void alignAndSizeControls() {
             titleLbl.Location = new System.Drawing.Point((this.Width / 2) - (titleLbl.Width / 2), titleLbl.Location.Y);
             newGameBtn.Location = new System.Drawing.Point((this.Width / 2) - (newGameBtn.Width / 2), newGameBtn.Location.Y);
