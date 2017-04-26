@@ -26,8 +26,8 @@ namespace ThreeOrMore {
         }
 
         private void alignAndSizeControls() {
-            titleLbl.Location = new System.Drawing.Point((ParentForm.Width / 2) - (titleLbl.Width / 2), titleLbl.Location.Y);
-            newGameBtn.Location = new System.Drawing.Point((ParentForm.Width / 2) - (newGameBtn.Width / 2), newGameBtn.Location.Y);
+            titleLbl.Location = new System.Drawing.Point((this.Width / 2) - (titleLbl.Width / 2), titleLbl.Location.Y);
+            newGameBtn.Location = new System.Drawing.Point((this.Width / 2) - (newGameBtn.Width / 2), newGameBtn.Location.Y);
         }
     }
 }

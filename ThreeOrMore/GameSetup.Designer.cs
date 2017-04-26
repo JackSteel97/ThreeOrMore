@@ -216,6 +216,7 @@
             this.Text = "Game Setup";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.GameSetup_Load);
             this.gameSetupContainer.ResumeLayout(false);
             this.gameSetupContainer.PerformLayout();
             this.ResumeLayout(false);

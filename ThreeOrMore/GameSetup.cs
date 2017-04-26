@@ -91,5 +91,17 @@ namespace ThreeOrMore {
                 this.Close();
             }
         }
+
+        private void GameSetup_Load(object sender, EventArgs e) {
+            alignAndSizeControls();
+        }
+
+        private void alignAndSizeControls() {
+            setLocationByPercentage(scoreToWinLbl, 18.6, 12.9);
+        }
+
+        private void setLocationByPercentage(Control control, double xPercent, double yPercent) {
+            control.Location = new Point((int)Math.Round(this.Width * xPercent), (int)Math.Round(this.Height * yPercent));
+        }
     }
 }
