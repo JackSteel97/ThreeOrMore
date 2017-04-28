@@ -42,7 +42,7 @@ namespace ThreeOrMore {
                 MonoFlat.MonoFlat_Label playerLbl = new MonoFlat.MonoFlat_Label();
                 playerLbl.AutoSize = true;
                 //set the label text to the player number and entered name
-                playerLbl.Text = string.Format("Player {0}:\n\t{1}\n\tAI:{2}", players.Count + 1, newPlayerNameTxt.Text.Trim(),boolToYesNoString(aiCheck.Checked));
+                playerLbl.Text = string.Format("Player {0}:\n \t{1}\n \tAI:{2}", players.Count + 1, newPlayerNameTxt.Text.Trim(),boolToYesNoString(aiCheck.Checked));
                 playerLbl.Margin = new Padding(15);
                 playerLbl.Font = new Font("Segoe UI", 14, FontStyle.Italic, GraphicsUnit.Point);
                 playerLbl.Name = string.Format("player{0}", players.Count);
@@ -54,7 +54,17 @@ namespace ThreeOrMore {
                 //reset the text box and check box
                 newPlayerNameTxt.Text = "";
                 aiCheck.Checked = false;
+                
+                playerLbl.MouseUp += new MouseEventHandler(player_MouseUp);
             }
+        }
+
+        private void player_MouseUp (object sender, MouseEventArgs e) {
+            string name = ((MonoFlat.MonoFlat_Label)sender).Name.ToString();
+            int index = Convert.ToInt32(name.Replace("player", ""));
+
+            players.RemoveAt(index);
+            ((MonoFlat.MonoFlat_Label)sender).Hide();
         }
 
         /// <summary>
