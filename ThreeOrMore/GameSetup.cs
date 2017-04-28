@@ -54,11 +54,16 @@ namespace ThreeOrMore {
                 //reset the text box and check box
                 newPlayerNameTxt.Text = "";
                 aiCheck.Checked = false;
-                
+                //add handler
                 playerLbl.MouseUp += new MouseEventHandler(player_MouseUp);
             }
         }
 
+        /// <summary>
+        /// Handler for removing a player when clicked
+        /// </summary>
+        /// <param name="sender">The player that was clicked</param>
+        /// <param name="e">event args</param>
         private void player_MouseUp (object sender, MouseEventArgs e) {
             string name = ((MonoFlat.MonoFlat_Label)sender).Name.ToString();
             int index = Convert.ToInt32(name.Replace("player", ""));

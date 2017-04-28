@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.gameSetupContainer = new MonoFlat.MonoFlat_ThemeContainer();
+            this.infoLbl = new MonoFlat.MonoFlat_Label();
             this.aiCheck = new MonoFlat.MonoFlat_CheckBox();
             this.startGameBtn = new MonoFlat.MonoFlat_Button();
             this.scoreToWinLbl = new MonoFlat.MonoFlat_Label();
@@ -41,6 +42,7 @@
             // gameSetupContainer
             // 
             this.gameSetupContainer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(41)))), ((int)(((byte)(50)))));
+            this.gameSetupContainer.Controls.Add(this.infoLbl);
             this.gameSetupContainer.Controls.Add(this.aiCheck);
             this.gameSetupContainer.Controls.Add(this.startGameBtn);
             this.gameSetupContainer.Controls.Add(this.scoreToWinLbl);
@@ -64,6 +66,18 @@
             this.gameSetupContainer.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.gameSetupContainer.TabIndex = 0;
             this.gameSetupContainer.Text = "Game Setup";
+            // 
+            // infoLbl
+            // 
+            this.infoLbl.AutoSize = true;
+            this.infoLbl.BackColor = System.Drawing.Color.Transparent;
+            this.infoLbl.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.infoLbl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(125)))), ((int)(((byte)(132)))));
+            this.infoLbl.Location = new System.Drawing.Point(26, 269);
+            this.infoLbl.Name = "infoLbl";
+            this.infoLbl.Size = new System.Drawing.Size(165, 15);
+            this.infoLbl.TabIndex = 11;
+            this.infoLbl.Text = "Click a player to remove them";
             // 
             // aiCheck
             // 
@@ -237,5 +251,6 @@
         private MonoFlat.MonoFlat_TrackBar scoreSlider;
         private MonoFlat.MonoFlat_Button startGameBtn;
         private MonoFlat.MonoFlat_CheckBox aiCheck;
+        private MonoFlat.MonoFlat_Label infoLbl;
     }
 }
