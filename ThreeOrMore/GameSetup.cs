@@ -21,6 +21,18 @@ namespace ThreeOrMore {
         }
 
         /// <summary>
+        /// Convert a boolean value to 'Yes' or 'No'
+        /// </summary>
+        /// <param name="b">boolean to convert</param>
+        /// <returns>A yes or no string</returns>
+        private string boolToYesNoString (bool b) {
+            if(b) {
+                return "Yes";
+            }
+            return "No";
+        }
+
+        /// <summary>
         /// Called when the addNewPlayerBtn control is clicked
         /// </summary>
         private void addNewPlayerBtn_Click(object sender, EventArgs e) {
@@ -30,7 +42,7 @@ namespace ThreeOrMore {
                 MonoFlat.MonoFlat_Label playerLbl = new MonoFlat.MonoFlat_Label();
                 playerLbl.AutoSize = true;
                 //set the label text to the player number and entered name
-                playerLbl.Text = string.Format("Player {0}:\n \t{1}", players.Count + 1, newPlayerNameTxt.Text.Trim());
+                playerLbl.Text = string.Format("Player {0}:\n\t{1}\n\tAI:{2}", players.Count + 1, newPlayerNameTxt.Text.Trim(),boolToYesNoString(aiCheck.Checked));
                 playerLbl.Margin = new Padding(15);
                 playerLbl.Font = new Font("Segoe UI", 14, FontStyle.Italic, GraphicsUnit.Point);
                 playerLbl.Name = string.Format("player{0}", players.Count);
