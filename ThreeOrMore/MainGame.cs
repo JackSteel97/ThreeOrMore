@@ -132,7 +132,7 @@ namespace ThreeOrMore {
                 MonoFlat.MonoFlat_Label lbl = new MonoFlat.MonoFlat_Label();
                 lbl.AutoSize = true;
                 //make it fit inside the historyContainer
-                lbl.MaximumSize = new Size(historyContainer.Width - 10, 500);
+                lbl.MaximumSize = new Size(historyContainer.Width - 20, 500);
                 lbl.Margin = new Padding(5);
                 //set it's text to the readable format of the last history entry
                 lbl.Text = history.Last().getReadableFormat();
@@ -141,11 +141,13 @@ namespace ThreeOrMore {
                 MonoFlat.MonoFlat_Separator sep = new MonoFlat.MonoFlat_Separator();
                 //make it fit inside the historyContainer
                 sep.Margin = new Padding(0, 10, 0, 10);
-                sep.Width = historyContainer.Width;
+                sep.Width = historyContainer.Width-20;
                 //add the label to the historyContainer
                 historyContainer.Controls.Add(lbl);
                 //add the separator to the historyContainer
                 historyContainer.Controls.Add(sep);
+                historyContainer.ScrollControlIntoView(sep);
+                
                 //pass the game history to updateStats
                 updateStats(history);
             }
